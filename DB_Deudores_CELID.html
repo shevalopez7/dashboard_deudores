@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis y Visualización de Mora de las Familias Argentinas | BCRA & ARCA</title>
+    <!-- Tailwind CSS CDN Oficial -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN Oficial -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <!-- Chart.js DataLabels Plugin Oficial -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    </style>
+
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen">
+    <header class="border-b border-slate-800 bg-slate-950/95 backdrop-blur px-6 py-4 shadow-2xl">
+        <div class="max-w-7xl mx-auto flex items-start gap-4 md:gap-6">
+            <div class="flex-shrink-0">
+                <div class="rounded-2xl bg-slate-900/90 border border-blue-500/40 shadow-lg p-2">
+                    <img src="Logo_CELID.jpeg" alt="Logo CELID" class="h-16 w-auto object-contain sm:h-20 md:h-24" />
+                </div>
+            </div>
+
+            <div class="flex-1 min-w-0 pt-1">
+                <h1 class="text-xl sm:text-2xl md:text-3xl font-black text-white tracking-tight leading-tight">Análisis y Visualización de Mora de las Familias Argentinas</h1>
+                <p class="text-sm sm:text-base font-semibold text-blue-400 mt-1">Datos en base a BCRA & ARCA</p>
+                <div class="flex flex-wrap items-center gap-2 pt-2 text-xs text-slate-400 font-medium">
+                    <span class="px-2.5 py-0.5 rounded bg-slate-800/90 text-slate-300 font-mono border border-slate-700/60">Periodo: Julio 2026</span>
+                    <span>·</span>
+                    <span class="text-slate-300">Consolidado Nacional sin Muestreo (40,6M deudas)</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <main class="max-w-7xl mx-auto px-6 py-6 space-y-8">
+
+        <!-- =================================================================== -->
+        <!-- SECCIÓN 1: Cuatro Indicadores Principales Superiores (Orden Solicitado) -->
+        <!-- =================================================================== -->
+        <section class="space-y-2">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- KPI 1: Deuda Total -->
+                <div class="bg-slate-800/90 border border-slate-700/70 rounded-xl p-4 shadow-md flex flex-col justify-between">
+                    <div>
+                        <p class="text-[11px] uppercase font-bold tracking-wide text-slate-400">Deuda total</p>
+                        <h3 class="text-xl sm:text-2xl font-black text-white mt-1 font-mono">$ 96,25 billones</h3>
+                    </div>
+                    <p class="text-[10px] text-emerald-400 mt-2 font-medium">Cartera total (situaciones de 1 a 5)</p>
+                </div>
+
+                <!-- KPI 2: Morosidad de las Familias -->
+                <div class="bg-slate-800/90 border border-rose-500/50 rounded-xl p-4 shadow-md bg-gradient-to-br from-slate-800 to-rose-950/25 flex flex-col justify-between">
+                    <div>
+                        <p class="text-[11px] uppercase font-bold tracking-wide text-rose-300">Morosidad de las Familias</p>
+                        <div class="flex flex-col sm:flex-row sm:items-baseline gap-1.5 mt-1">
+                            <h3 class="text-xl sm:text-2xl font-black text-rose-500 font-mono">5.936.041 personas</h3>
+                            <span class="text-sm sm:text-base font-extrabold text-rose-400 font-mono">(28,2%)</span>
+                        </div>
+                    </div>
+                    <p class="text-[10px] text-rose-300/90 mt-2 font-medium">28,2% de la cartera deudora · En base a personas humanas vivas (situaciones de 3 a 5)</p>
+                </div>
+
+                <!-- KPI 3: Monto total de situación de mora real (con % de cartera total) -->
+                <div class="bg-slate-800/90 border border-rose-500/40 rounded-xl p-4 shadow-md bg-gradient-to-br from-slate-800 to-rose-950/25 flex flex-col justify-between">
+                    <div>
+                        <p class="text-[11px] uppercase font-bold tracking-wide text-rose-300">Monto total de situación de mora real</p>
+                        <div class="flex flex-col sm:flex-row sm:items-baseline gap-1.5 mt-1">
+                            <h3 class="text-xl sm:text-2xl font-black text-rose-400 font-mono">$ 15,15 billones</h3>
+                            <span class="text-sm sm:text-base font-extrabold text-rose-300 font-mono">(15,7%)</span>
+                        </div>
+                    </div>
+                    <p class="text-[10px] text-rose-300/90 mt-2 font-medium">15,7% de la cartera total · Promedio de mora por persona: $ 2.552.841</p>
+                </div>
+
+                <!-- KPI 4: Entidades con créditos en mora -->
+                <div class="bg-slate-800/90 border border-blue-500/40 rounded-xl p-4 shadow-md bg-gradient-to-br from-slate-800 to-blue-950/25 flex flex-col justify-between">
+                    <div>
+                        <p class="text-[11px] uppercase font-bold tracking-wide text-blue-300">Entidades con créditos en mora</p>
+                        <h3 class="text-xl sm:text-2xl font-black text-blue-400 mt-1 font-mono">451 activas</h3>
+                    </div>
+                    <p class="text-[10px] text-blue-300/80 mt-2 font-medium">de un total de 577 registradas en el BCRA (incluye bancos, fintechs / prestamistas no bancarios)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- SECCIÓN 2: Deudores en mora: Distribución por Género y Rango Etario -->
+        <!-- =================================================================== -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Gráfico 2.1: Deudores en mora: distribución por género -->
+            <div class="bg-slate-800/80 border border-slate-700/60 rounded-xl p-5 shadow-lg flex flex-col justify-between">
+                <div>
+                    <h2 class="text-base font-bold text-white">Deudores en mora: distribución por género</h2>
+                    <p class="text-xs text-slate-400 mt-0.5">Situaciones de 3 a 5</p>
+                </div>
+                <div class="h-72 flex items-center justify-center mt-2 relative">
+                    <canvas id="chartGeneroPie"></canvas>
+                </div>
+            </div>
+
+            <!-- Gráfico 2.2: Deudores en mora: distribución por rango etario -->
+            <div class="bg-slate-800/80 border border-slate-700/60 rounded-xl p-5 shadow-lg flex flex-col justify-between">
+                <div>
+                    <h2 class="text-base font-bold text-white">Deudores en mora: distribución por rango etario</h2>
+                    <p class="text-xs text-slate-400 mt-0.5">Ordenadas: # de personas | Tamaño de barra: Monto en $</p>
+                </div>
+                <div class="h-72 mt-2">
+                    <canvas id="chartEdadChunks"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- SECCIÓN 3: Distribución por Situación y Top 10 Entidades            -->
+        <!-- =================================================================== -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Gráfico 3.1: Distribución de Deuda por Situación (de 3 a 5) -->
+            <div class="bg-slate-800/80 border border-slate-700/60 rounded-xl p-5 shadow-lg flex flex-col justify-between">
+                <div>
+                    <h2 class="text-base font-bold text-white">Distribución de Deuda por Situación (de 3 a 5)</h2>
+                    <p class="text-xs text-slate-400 mt-0.5">Monto total en $ con etiqueta de # de personas por situación</p>
+                </div>
+                <div class="h-[540px] mt-2 relative">
+                    <canvas id="chartSituaciones3a5"></canvas>
+                </div>
+            </div>
+
+            <!-- Gráfico 3.2: Top 10 Entidades Emisoras de Crédito por Cantidad de personas en Mora (de 3 a 5) -->
+            <div class="bg-slate-800/80 border border-slate-700/60 rounded-xl p-5 shadow-lg flex flex-col justify-between">
+                <div>
+                    <h2 class="text-base font-bold text-white">Top 10 Entidades Emisoras de Crédito por Cantidad de personas en Mora (de 3 a 5)</h2>
+                    <p class="text-xs text-slate-400 mt-0.5">Etiqueta: % de deudores de la entidad sobre el total nacional de mora (5.936.041 personas)</p>
+                </div>
+                <div class="h-[540px] mt-2 relative">
+                    <canvas id="chartTopEntidadesPersonas"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- SECCIÓN 4: Tabla Detallada BCRA (100% de Ancho, Sin Descripción)    -->
+        <!-- =================================================================== -->
+        <section class="bg-slate-800/80 border border-slate-700/60 rounded-xl p-5 shadow-lg space-y-3">
+            <div>
+                <h2 class="text-base font-bold text-white">Tabla Detallada de Clasificación BCRA (Situaciones 1 a 5)</h2>
+                <p class="text-xs text-slate-400 mt-0.5">% Cartera Total sobre $ 96,25 billones (suma 100%) · % de la Mora sobre $ 15,15 billones en mora grave (Sit 3 a 5, suma 100%)</p>
+            </div>
+            <div class="overflow-x-auto border border-slate-700/50 rounded-lg">
+                <table class="w-full text-left text-xs text-slate-300">
+                    <thead class="bg-slate-900 text-slate-300 uppercase text-[10px] tracking-wider border-b border-slate-700">
+                        <tr>
+                            <th class="py-2.5 px-4 font-semibold">Situación</th>
+                            <th class="py-2.5 px-4 text-right font-semibold"># Deudores</th>
+                            <th class="py-2.5 px-4 text-right font-semibold">Monto en $</th>
+                            <th class="py-2.5 px-4 text-right font-semibold">% Cartera Total</th>
+                            <th class="py-2.5 px-4 text-right font-semibold">% de la Mora (3 a 5)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-700/60 font-mono">
+
+    <tr class="hover:bg-slate-700/30">
+        <td class="py-2.5 px-4 font-medium text-slate-200">1 - Situación Normal (Atraso <= 31 d)</td>
+        <td class="py-2.5 px-4 text-right font-mono text-slate-200">14.438.333</td>
+        <td class="py-2.5 px-4 text-right font-semibold font-mono text-emerald-400">$ 77.428.612,1 M</td>
+        <td class="py-2.5 px-4 text-right font-mono text-slate-300">80.4%</td>
+        <td class="py-2.5 px-4 text-right font-mono font-semibold text-rose-300">-</td>
+    </tr>
+    
+    <tr class="hover:bg-slate-700/30">
+        <td class="py-2.5 px-4 font-medium text-slate-200">2 - Con Seguimiento Especial (31-90 d)</td>
+        <td class="py-2.5 px-4 text-right font-mono text-slate-200">659.053</td>
+        <td class="py-2.5 px-4 text-right font-semibold font-mono text-amber-400">$ 3.671.298,4 M</td>
+        <td class="py-2.5 px-4 text-right font-mono text-slate-300">3.8%</td>
+        <td class="py-2.5 px-4 text-right font-mono font-semibold text-rose-300">-</td>
+    </tr>
+    
+    <tr class="hover:bg-slate-700/30">
+        <td class="py-2.5 px-4 font-medium text-slate-200">3 - Con Problemas (90-180 d)</td>
+        <td class="py-2.5 px-4 text-right font-mono text-slate-200">718.229</td>
+        <td class="py-2.5 px-4 text-right font-semibold font-mono text-rose-400">$ 3.857.823,8 M</td>
+        <td class="py-2.5 px-4 text-right font-mono text-slate-300">4.0%</td>
+        <td class="py-2.5 px-4 text-right font-mono font-semibold text-rose-300">25.5%</td>
+    </tr>
+    
+    <tr class="hover:bg-slate-700/30">
+        <td class="py-2.5 px-4 font-medium text-slate-200">4 - Con Alto Riesgo de Insolvencia (180-365 d)</td>
+        <td class="py-2.5 px-4 text-right font-mono text-slate-200">1.401.566</td>
+        <td class="py-2.5 px-4 text-right font-semibold font-mono text-rose-400">$ 6.977.516,3 M</td>
+        <td class="py-2.5 px-4 text-right font-mono text-slate-300">7.2%</td>
+        <td class="py-2.5 px-4 text-right font-mono font-semibold text-rose-300">46.0%</td>
+    </tr>
+    
+    <tr class="hover:bg-slate-700/30">
+        <td class="py-2.5 px-4 font-medium text-slate-200">5 - Irrecuperable (> 365 d)</td>
+        <td class="py-2.5 px-4 text-right font-mono text-slate-200">3.816.246</td>
+        <td class="py-2.5 px-4 text-right font-semibold font-mono text-rose-400">$ 4.318.430,6 M</td>
+        <td class="py-2.5 px-4 text-right font-mono text-slate-300">4.5%</td>
+        <td class="py-2.5 px-4 text-right font-mono font-semibold text-rose-300">28.5%</td>
+    </tr>
+    
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Scripts de Visualización Interactiva con Chart.js y DataLabels -->
+    <script>
+        const rawData = {"sexo": [{"sexo": "Varón", "cantidad": 2973487, "monto_millones": 8613475.81, "pct": 50.1, "color": "#3b82f6"}, {"sexo": "Mujer", "cantidad": 2962554, "monto_millones": 6540294.87, "pct": 49.9, "color": "#ec4899"}], "edad": [{"rango": "Jóvenes (18 a 30)", "cantidad": 1568771, "monto_millones": 2563115.3, "pct": 26.4, "color": "rgba(6, 182, 212, 0.85)"}, {"rango": "Adultos Jóvenes (30 a 45)", "cantidad": 2385655, "monto_millones": 6525800.24, "pct": 40.2, "color": "rgba(59, 130, 246, 0.85)"}, {"rango": "Adultos (45 a 60)", "cantidad": 1216231, "monto_millones": 4129195.5, "pct": 20.5, "color": "rgba(99, 102, 241, 0.85)"}, {"rango": "Adultos Mayores (> 60)", "cantidad": 765384, "monto_millones": 1935659.63, "pct": 12.9, "color": "rgba(245, 158, 11, 0.85)"}], "situaciones": [{"situacion": 3, "etiqueta": "3 - Con Problemas", "cantidad_nominal": 718229, "monto_millones": 3857823.75, "pct_sobre_mora": 12.1, "color": "rgba(248, 113, 113, 0.85)", "personas_unicas": 718229}, {"situacion": 4, "etiqueta": "4 - Alto Riesgo", "cantidad_nominal": 1401566, "monto_millones": 6977516.29, "pct_sobre_mora": 23.6, "color": "rgba(220, 38, 38, 0.90)", "personas_unicas": 1401566}, {"situacion": 5, "etiqueta": "5 - Irrecuperable", "cantidad_nominal": 3816246, "monto_millones": 4318430.63, "pct_sobre_mora": 64.3, "color": "rgba(153, 27, 27, 0.98)", "personas_unicas": 3816246}], "top_entidades": [{"entidad": "MERCADOLIBRE S.R.L.", "personas_mora": 1142811, "monto_mora_millones": 535459.66, "cartera_total_millones": 2947766.05, "tasa_mora": 18.16, "dias_prom": 1, "refinanciados": 0, "color": "rgba(127, 29, 29, 0.95)", "label_wrapped": "MERCADOLIBRE S.R.L."}, {"entidad": "TARJETA NARANJA S.A.U.", "personas_mora": 1050688, "monto_mora_millones": 1289600.05, "cartera_total_millones": 5145070.96, "tasa_mora": 25.06, "dias_prom": 0, "refinanciados": 0, "color": "rgba(153, 27, 27, 0.92)", "label_wrapped": "TARJETA NARANJA S.A.U."}, {"entidad": "NARANJA DIGITAL COMPAÑÍA FINANCIERA S.A.U.", "personas_mora": 727255, "monto_mora_millones": 244158.19, "cartera_total_millones": 1123599.7, "tasa_mora": 21.73, "dias_prom": 37, "refinanciados": 86145, "color": "rgba(185, 28, 28, 0.90)", "label_wrapped": ["NARANJA DIGITAL", "COMPAÑÍA FINANCIERA", "S.A.U."]}, {"entidad": "BANCO DE GALICIA Y BUENOS AIRES S.A.", "personas_mora": 522567, "monto_mora_millones": 1765107.23, "cartera_total_millones": 9713609.13, "tasa_mora": 18.17, "dias_prom": 35, "refinanciados": 95601, "color": "rgba(220, 38, 38, 0.88)", "label_wrapped": ["BANCO DE GALICIA Y", "BUENOS AIRES S.A."]}, {"entidad": "BANCO BBVA ARGENTINA S.A.", "personas_mora": 455274, "monto_mora_millones": 858236.35, "cartera_total_millones": 6236360.36, "tasa_mora": 13.76, "dias_prom": 9, "refinanciados": 18481, "color": "rgba(239, 68, 68, 0.85)", "label_wrapped": ["BANCO BBVA ARGENTINA", "S.A."]}, {"entidad": "BANCO DE LA NACION ARGENTINA", "personas_mora": 384273, "monto_mora_millones": 1617150.93, "cartera_total_millones": 20003413.67, "tasa_mora": 8.08, "dias_prom": 14, "refinanciados": 32233, "color": "rgba(248, 113, 113, 0.82)", "label_wrapped": ["BANCO DE LA NACION", "ARGENTINA"]}, {"entidad": "RECUPERO DE ACTIVOS FIDEICOMISO FINANCIERO", "personas_mora": 309173, "monto_mora_millones": 169240.68, "cartera_total_millones": 169240.68, "tasa_mora": 100.0, "dias_prom": 0, "refinanciados": 0, "color": "rgba(252, 165, 165, 0.80)", "label_wrapped": ["RECUPERO DE ACTIVOS", "FIDEICOMISO FINANCIERO"]}, {"entidad": "BANCO DE LA PROVINCIA DE BUENOS AIRES", "personas_mora": 288368, "monto_mora_millones": 1157322.64, "cartera_total_millones": 7104539.2, "tasa_mora": 16.29, "dias_prom": 99, "refinanciados": 38378, "color": "rgba(254, 202, 202, 0.78)", "label_wrapped": ["BANCO DE LA PROVINCIA", "DE BUENOS AIRES"]}, {"entidad": "BANCO MACRO S.A.", "personas_mora": 243028, "monto_mora_millones": 554965.43, "cartera_total_millones": 6550011.17, "tasa_mora": 8.47, "dias_prom": 27, "refinanciados": 29033, "color": "rgba(254, 226, 226, 0.75)", "label_wrapped": "BANCO MACRO S.A."}, {"entidad": "BANCO SANTANDER ARGENTINA S.A.", "personas_mora": 230959, "monto_mora_millones": 1423780.95, "cartera_total_millones": 8223389.18, "tasa_mora": 17.31, "dias_prom": 47, "refinanciados": 36691, "color": "rgba(255, 241, 242, 0.70)", "label_wrapped": ["BANCO SANTANDER", "ARGENTINA S.A."]}]};
+
+        function fmtARS(num, decimals = 1) {
+            if (num === null || num === undefined || isNaN(num)) return "$ 0,0";
+            return "$ " + Number(num).toLocaleString('es-AR', {
+                minimumFractionDigits: decimals,
+                maximumFractionDigits: decimals
+            });
+        }
+        function fmtInt(num) {
+            if (num === null || num === undefined || isNaN(num)) return "0";
+            return Number(num).toLocaleString('es-AR', { maximumFractionDigits: 0 });
+        }
+
+        function inicializarTodoElDashboard() {
+            // 1. Guard contra Chart.js no cargado aún
+            if (typeof Chart === 'undefined') {
+                setTimeout(inicializarTodoElDashboard, 60);
+                return;
+            }
+
+            // 2. Registrar Plugin DataLabels de forma segura
+            if (typeof ChartDataLabels !== 'undefined') {
+                try {
+                    Chart.register(ChartDataLabels);
+                } catch(eDataLabels) {
+                    console.warn("ChartDataLabels aviso:", eDataLabels);
+                }
+            }
+
+            // =====================================================================
+            // 1. GRÁFICO: Deudores en mora: distribución por género
+            // =====================================================================
+            try {
+                const elGenero = document.getElementById('chartGeneroPie');
+                if (elGenero) {
+                    new Chart(elGenero.getContext('2d'), {
+                        type: 'doughnut',
+                        data: {
+                            labels: rawData.sexo.map(d => d.sexo),
+                            datasets: [{
+                                data: rawData.sexo.map(d => d.cantidad),
+                                backgroundColor: ['#3b82f6', '#ec4899'],
+                                borderWidth: 2,
+                                borderColor: '#1e293b'
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    position: 'bottom',
+                                    labels: { color: '#cbd5e1', font: { size: 12, weight: 'bold' }, padding: 16 }
+                                },
+                                datalabels: {
+                                    color: '#ffffff',
+                                    font: { size: 11, weight: 'bold' },
+                                    formatter: function(value, ctx) {
+                                        const item = rawData.sexo[ctx.dataIndex];
+                                        return `${item.sexo}
+${fmtInt(value)}
+(${item.pct}%)`;
+                                    },
+                                    textAlign: 'center',
+                                    textShadowBlur: 4,
+                                    textShadowColor: 'rgba(0,0,0,0.8)'
+                                },
+                                tooltip: {
+                                    callbacks: {
+                                        label: function(ctx) {
+                                            const item = rawData.sexo[ctx.dataIndex];
+                                            return [
+                                                `${item.sexo}: ${fmtInt(item.cantidad)} personas (${item.pct}%)`,
+                                                `Monto Deuda Mora: ${fmtARS(item.monto_millones, 1)} M`
+                                            ];
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+            } catch(errG) { console.error("Error chartGeneroPie:", errG); }
+
+            // =====================================================================
+            // 2. GRÁFICO: Deudores en mora: distribución por rango etario
+            // =====================================================================
+            try {
+                const elEdad = document.getElementById('chartEdadChunks');
+                if (elEdad) {
+                    const maxMontoEdad = Math.max(...rawData.edad.map(d => d.monto_millones));
+                    const barSizesEdad = rawData.edad.map(d => Math.round(24 + (d.monto_millones / maxMontoEdad) * 36));
+
+                    new Chart(elEdad.getContext('2d'), {
+                        type: 'bar',
+                        data: {
+                            labels: rawData.edad.map(d => d.rango),
+                            datasets: [{
+                                label: 'Cantidad de Personas',
+                                data: rawData.edad.map(d => d.cantidad),
+                                backgroundColor: rawData.edad.map(d => d.color),
+                                borderRadius: 6,
+                                borderWidth: 1,
+                                borderColor: 'rgba(255,255,255,0.15)',
+                                barThickness: barSizesEdad
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            layout: { padding: { top: 30 } },
+                            plugins: {
+                                legend: { display: false },
+                                datalabels: {
+                                    anchor: 'end',
+                                    align: 'top',
+                                    color: '#f1f5f9',
+                                    font: { size: 10, weight: 'bold' },
+                                    formatter: function(value, ctx) {
+                                        const item = rawData.edad[ctx.dataIndex];
+                                        return `${fmtInt(value)}
+$ ${Math.round(item.monto_millones/1000).toLocaleString('es-AR')}B`;
+                                    },
+                                    textAlign: 'center'
+                                },
+                                tooltip: {
+                                    callbacks: {
+                                        label: function(ctx) {
+                                            const item = rawData.edad[ctx.dataIndex];
+                                            return [
+                                                `Personas: ${fmtInt(item.cantidad)} (${item.pct}%)`,
+                                                `Monto en Mora: ${fmtARS(item.monto_millones, 1)} M`
+                                            ];
+                                        }
+                                    }
+                                }
+                            },
+                            scales: {
+                                y: {
+                                    grid: { color: 'rgba(255,255,255,0.05)' },
+                                    ticks: {
+                                        color: '#94a3b8',
+                                        callback: v => fmtInt(v)
+                                    }
+                                },
+                                x: {
+                                    grid: { display: false },
+                                    ticks: { color: '#cbd5e1', font: { size: 10 } }
+                                }
+                            }
+                        }
+                    });
+                }
+            } catch(errE) { console.error("Error chartEdadChunks:", errE); }
+
+            // =====================================================================
+            // 3. GRÁFICO: Distribución de Deuda por Situación (de 3 a 5)
+            // =====================================================================
+            try {
+                const elSit = document.getElementById('chartSituaciones3a5');
+                if (elSit) {
+                    new Chart(elSit.getContext('2d'), {
+                        type: 'bar',
+                        data: {
+                            labels: rawData.situaciones.map(d => d.etiqueta),
+                            datasets: [{
+                                label: 'Monto en Millones',
+                                data: rawData.situaciones.map(d => d.monto_millones),
+                                backgroundColor: rawData.situaciones.map(d => d.color),
+                                borderColor: 'rgba(255,255,255,0.15)',
+                                borderWidth: 1,
+                                borderRadius: 6
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            layout: { padding: { top: 25 } },
+                            plugins: {
+                                legend: { display: false },
+                                datalabels: {
+                                    anchor: 'end',
+                                    align: 'top',
+                                    color: '#f8fafc',
+                                    font: { size: 10, weight: 'bold' },
+                                    formatter: function(value, ctx) {
+                                        const item = rawData.situaciones[ctx.dataIndex];
+                                        return `${fmtInt(item.personas_unicas)} personas`;
+                                    },
+                                    textAlign: 'center'
+                                },
+                                tooltip: {
+                                    callbacks: {
+                                        label: function(ctx) {
+                                            const item = rawData.situaciones[ctx.dataIndex];
+                                            return [
+                                                `Monto en Mora: ${fmtARS(item.monto_millones, 1)} M`,
+                                                `Deudores: ${fmtInt(item.personas_unicas)} (${item.pct_sobre_mora}% de mora 2-5)`
+                                            ];
+                                        }
+                                    }
+                                }
+                            },
+                            scales: {
+                                y: { 
+                                    grid: { color: 'rgba(255,255,255,0.05)' }, 
+                                    ticks: { 
+                                        color: '#94a3b8',
+                                        callback: v => fmtARS(v, 0) + ' M'
+                                    } 
+                                },
+                                x: { grid: { display: false }, ticks: { color: '#cbd5e1' } }
+                            }
+                        }
+                    });
+                }
+            } catch(errS) { console.error("Error chartSituaciones3a5:", errS); }
+
+            // =====================================================================
+            // 4. GRÁFICO: Top 10 Entidades por Cantidad de Personas en Mora (3 a 5)
+            // (Etiqueta modificada a porcentaje sobre el total nacional de mora 5.936.041)
+            // =====================================================================
+            try {
+                const elTop = document.getElementById('chartTopEntidadesPersonas');
+                if (elTop) {
+                    const maxMontoTop = Math.max(...rawData.top_entidades.map(d => d.monto_mora_millones));
+                    const barThicknessTop = rawData.top_entidades.map(d => Math.round(14 + (d.monto_mora_millones / maxMontoTop) * 22));
+
+                    new Chart(elTop.getContext('2d'), {
+                        type: 'bar',
+                        data: {
+                            labels: rawData.top_entidades.map(b => b.label_wrapped),
+                            datasets: [{
+                                label: 'Cantidad de Personas',
+                                data: rawData.top_entidades.map(b => b.personas_mora),
+                                backgroundColor: rawData.top_entidades.map(b => b.color),
+                                borderColor: 'rgba(255, 255, 255, 0.15)',
+                                borderWidth: 1,
+                                borderRadius: 4,
+                                barThickness: barThicknessTop
+                            }]
+                        },
+                        options: {
+                            indexAxis: 'y',
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            layout: { padding: { right: 80 } },
+                            plugins: {
+                                legend: { display: false },
+                                datalabels: {
+                                    anchor: 'end',
+                                    align: 'right',
+                                    color: '#fca5a5',
+                                    font: { size: 9.5, weight: 'bold' },
+                                    formatter: function(value, ctx) {
+                                        const b = rawData.top_entidades[ctx.dataIndex];
+                                        const pct = ((b.personas_mora / 5936041) * 100).toLocaleString('es-AR', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+                                        return `${pct}%`;
+                                    }
+                                },
+                                tooltip: {
+                                    callbacks: {
+                                        label: function(ctx) {
+                                            const b = rawData.top_entidades[ctx.dataIndex];
+                                            const pct = ((b.personas_mora / 5936041) * 100).toLocaleString('es-AR', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+                                            return [
+                                                `Personas en mora: ${fmtInt(b.personas_mora)} (${pct}% del total nacional 3-5)`,
+                                                `Monto mora 3-5: ${fmtARS(b.monto_mora_millones, 1)} M`,
+                                                `Tasa mora entidad: ${b.tasa_mora.toFixed(1)}%`
+                                            ];
+                                        }
+                                    }
+                                }
+                            },
+                            scales: {
+                                x: { 
+                                    grid: { color: 'rgba(255,255,255,0.05)' }, 
+                                    ticks: { 
+                                        color: '#94a3b8',
+                                        callback: v => fmtInt(v)
+                                    } 
+                                },
+                                y: { 
+                                    grid: { display: false }, 
+                                    ticks: { 
+                                        autoSkip: false,
+                                        color: '#e2e8f0', 
+                                        font: { size: 9.5, weight: '500' },
+                                        padding: 6
+                                    } 
+                                }
+                            }
+                        }
+                    });
+                }
+            } catch(errT) { console.error("Error chartTopEntidadesPersonas:", errT); }
+
+            // =====================================================================
+            // MAPA AMBA (Solo si está habilitado en la versión correspondiente)
+            // =====================================================================
+
+        }
+
+        // Inicializar de forma segura garantizando que el DOM y scripts estén listos
+        if (document.readyState === 'complete' || document.readyState === 'interactive') {
+            inicializarTodoElDashboard();
+        } else {
+            document.addEventListener('DOMContentLoaded', inicializarTodoElDashboard);
+            window.addEventListener('load', inicializarTodoElDashboard);
+        }
+    </script>
+</body>
+</html>
