@@ -1,0 +1,1958 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARGENTINA 2026: MOROSIDAD & TASAS DE INTERÉS | A. SIMPLE</title>
+    <!-- Tailwind CSS CDN Oficial -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN Oficial -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <!-- Chart.js DataLabels Plugin Oficial -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        .tab-btn-active {
+            background-color: #2563eb !important;
+            color: #ffffff !important;
+            border-color: #60a5fa !important;
+            box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.45) !important;
+        }
+        .section-frame {
+            background: rgba(15, 23, 42, 0.65);
+            border: 1px solid rgba(51, 65, 85, 0.75);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen">
+    <!-- Header Principal: ARGENTINA 2026: TASAS DE INTERÉS Y MOROSIDAD -->
+    <header class="border-b border-slate-800 bg-slate-950/95 backdrop-blur sticky top-0 z-50 px-6 py-4 shadow-2xl">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <!-- Título Principal (Sin Logo) -->
+            <div class="flex items-center gap-4">
+                <div class="flex-shrink-0 rounded-xl bg-amber-50 border border-slate-700/70 p-1.5 shadow-lg">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOUAAADcCAMAAAC4YpZBAAAA9lBMVEX99OOVJkb//ev/+OaPADf/+ej89eOVIUPr1syVJkf/++n+8+PhwbufQlegRlqiRlyREj3Oo6Ly4tOWJEKpWmrBjJH///C9g4qNADX///L//+uwa3Xo0MmPDDr///bq1szcubb47N2noJefNE7Rq6mdmZDi2szo49LPyLnEvbFkYVyAfndua2VYVVCZlot1c2vJlZi7eoOrYG6HACn559uWMEmvW2yub3a5cHyaMlKqYmypUmaOGUDex77Dg4rVs62IACW2r6SMiYRNTUonKSpCQDxoZVwyMSvTzb13dmo0MDK5tqpEQzyNi3tfXFtSUU8AAAB/eXceqTOLAAAKK0lEQVR4nO2bDVfbOhKGhRTJiQTUpMUYkwA29VfsOEDpve2FLjdJA9nSwvL//8xK/khsCLftEkPOnnnOARJblvV65JnR2CAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPAde4rXHkrP8IfHj7RnHiC2n02fBaHlIfClDwp/1gu4RFsvo8rnQ1nxIG3gpXeINbS1H+7ycC/dMGD5qzYa0uVSVmuLzStyYjB9dqNFkKq2l9Jmr3JRs/LEaKun5hhrO0lVqbwyqeDBhGXuVGcyIGovxRmstW6XFFGUfSzjmVP6QB0rJIir7Hp5iYdvKpurVFOryMqsGlVhIZqcRxGq/Pzk933x3un3YxqTkeu31RWT72ofpF7t6BvGgLXvUTbMtLIJmJ2FqBALXYcvyNm6tv+l2Uxeg6d3uX535Xt750H1EQ09HSLfSfR86VWvajUa57QaV20i73E2j2zp9f2ZVJw3erFOlQPzsvLE2p3VhfhKEpUIYOijvmjn8XKWuvjSaD1RqWrnpuVKJ2uaDHnTz5Kzi/OpViWizMiyF/vEsv2Vpc5HKtbLK7kNbVnpLVTLxUKU6iX5YllmzyvbaQ5EqYbCLS/D7KtWMzbvJZ+xClWtr5lYpB6hXJT/X8jnU6DYaDT37pu/hskrtonpn/pNKNddF662c+m/fyU4EK6nUGoruRSGzZM06VTL+PjNWS98+EFg0t/Us3TK/kLLKnQV+8wmVikylplQyNFd5sdM+OGg2L090PZd5Nju2VlvSj5nIj02sBkRw82Mq8+IPq6RS37LonDwG/ppKVFa5LSOIDJ347M9sTmufZp62RpWCr2dTyezkiRCjzXzLGSurXJAM/r5KfTvvhuGTzJofCjdXqy2tk/Qe0U9m15RZn9Jbs7HO61MpD/6c3f/HXNSvMl/1mAfzFuQwjeDmca0qyWU6Z2UWVoykRpXtbOJ8LGW0wr48VHRQWaWBZxRtn6US2Zk3vyjywxpVkk7mQk/Li1dRyrILH3v+517BX020DJV5BGsckPpVrmfz5uSplWaRFWhzzELVM1WepCq76y+g8rBb9QFPqSwxy1ufpxLvZEcfvoDK993cuby4Sn6cHX1J61eZ23KbPtF8gUpzSSp3Ll7MlsV9WSmdsWyJLRar1JdzX+I/U5WN9RewZTNT+a48Y0mpzD2LJKnyFLsIOs9TSTdT7zOL1HXGy7MsXmrz+gRi7eMtyXHq/BZlBUXT56hkyM4z2aK3OlUaH7Oo9WU+UnJpqjK3eUyfUFnwHJXCyg7WzvEL5LG5D9BO571b7wrh4tdUNv+HbJ2JbB3b3Sr8Xp0qSSdfgawXA8LrZpba2qyscoETXmhL8QsqBSM0u5T5yqdulUWtvdVdl0s/RoiVed2WtocrKy+r/PiNVmoFTVzeJ1JVT6g8tlTuyGlnM/MH+r9mzr1WleQwPX+rZZ4eNs+al6dmq1WKikUeu7dVAZVUap925pxIwzJEUFpL0t5ZKM2HC5Xa3rpcBlwen5uZJd9qbOb1aq777OXVCa1rmmY3r3R1d7I7aJbH6iW6etmWlX2m9MzNZru51kpVttsHzUrdJ60a6UU5rdGZV/JrruGJo/ykb/MfNZM2852/UMOr0F3nZ/Ji5RU7rWGaR/ypGp724bD0aLFelYzYG93K2Vut7vlsDfnbKondqladyWKVWveo83L1WIGI2GmUx6tC5Sy/eb7KRfVYTW983kKVJUJ9KkURkZsn3Yauq8ckutnaaZdy6s7fjcdk9Viy9cF8uEdOQruy0dxQtkTtUjemeXG+80Xw2emzMdTxzCsd5vwsXHzZ2jnZO9l+f0DL80jYzcccpMUSmQou2Cez3M5BuW0zPYkobWkLRHk5xqZ+uIYnexsHHcVMJWNpji4DHyWo/FRTRYXHzGtUD/dQeUQ1TXr8eFOk5yvRVGNpbqwtWWVWyTdbq/HEnWvpHE/Htdz3ClIXsDJvT5TeEVm6yrWjlXgTBuGjue9d1pswRzMXaK6thi2pNh/S5+WoJGWHuJQenwtD5SEt68I/etPj9VnBIQHAKvFkbGFPFaZn/LTBb7SqFWyUctvqePxh/l3mgQsb0KFf9ILxk27EHr66TL9363DBqXrJmmBXyD8ysU6Hhb0RT3NsHvVjjyKZ8PpDzlRtOku9qTHySNrW7/f6U5L1ovby7IPMkWXLQDZ63TDNxz6OPTuOkJf0Qu9r7Cc94fRuqEDeVZQYbhwQhCfCnggvjvjVZIji2KdJPJWbnbjv24PIZsKLDIJkA2Hfx23kxgn144Htu71hNCCh5w8G9s/HUh/22ELYGrMgCkb710YP4evdINq/8gges2kSJtZEGvW74G4wMtwwcHf7tt/zYupQNI33/+337OmAC28ycoxvNAwHnpjY/f3YV838eP+auaEbJPbN8DXjIhtj0mbfHCcMXWNi9Gw6NpzQckLKeoaXOJHj2tKWyBhNb6JYqZzsGmPjpudQEt4YiX3tODfKjLaNvxsU31Jp+Nj44fUxv5UW7pPhjRuEUeS84r0pcDz0vknjhEno7l4bt1M6wV7Pv/MRvps6iXfPekKqDG4mxjUaOUGEBtJg04RdY+KN/b4/mAYjirxbL2BjLwlHw2nf7hmRFwfhwB/sjpFS2ffd5DVtKehw5FOUOMib0pB4IzukJPgxpUjYo3DKw5EnvUno3DDq/Zgm1A2p6wp+IzczEiQhQq7LZFvHcXw7GXLqJEKEZGoz10V2wEPmeVNfHfqKIpF6qCd/0fRKk7QkIOQmol6oUBvTvYLz9COhqiGlNspKKIRSxrKPlNI0zDDZhhFky8tHVYe5BdWhqwQNk2xALPWKaU3L9ysP571oNmSeBNlb0sz3pfpBEV/vlrOaqgnGaehyqpIe3Jd2UJ8YHU58TjGSYVWaRBjEkFazBGYC0yTAQtnLmyQTjxhChlMm84N9edxKrGQXwkdx37H7UUKZUsmjaCKjoT8wRtF/7Kv7cTCS7smO6e1osDsZeP37yfQmHstb1xsZYiLujHE02L0deNdGPBi/aoj8B5jd3w2cxA2+Ssd6S4QM6D2PCD/mxtCRHtMJEo9/t6MwCiZ+vDuN9pMgmLqudLIRt65RD4XTa9wjxkQ2DtxVXTrafSN0ktAPBaO3Fmf9aeQR5MeWd2V4UarSGEuVjh/KeCEThWQaDYdK5chgE9Tzr7zxbo/hiR8ZQbKqcxbf38eufzcayBk7GcTendtPKHG/+teDe78/mgTBOOrbAzFOxriH6Xg0nkajwR0i3rdo4qGeN3a/TqVKmUWNxr5YiUraArDMymUqo1ykQDZjPvXVv36oijuivhPizN0ST9mJURlquUezhYmhttu2bKjEcW9VJf4MOgxW9VZbJlCKAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAID/C/4LIcMmazAYCDMAAAAASUVORK5CYII=" alt="Logo CELID" class="h-12 w-12 sm:h-14 sm:w-14 rounded-lg object-contain">
+                </div>
+                <div class="space-y-0.5">
+                    <h1 class="text-lg sm:text-xl md:text-2xl font-black text-white tracking-tight leading-tight">ARGENTINA 2026: MOROSIDAD &amp; TASAS DE INTERÉS<sup class="text-xs font-bold text-blue-400 ml-0.5"><a href="#recuadroReferencias" class="hover:underline">1</a></sup></h1>
+                    <p class="text-xs sm:text-sm font-semibold text-blue-400">Datos en base a <a href="https://www.bcra.gob.ar/" target="_blank" rel="noopener noreferrer" class="underline hover:text-blue-300">BCRA</a>, ARCA &amp; otros<sup class="text-[10px] font-bold text-blue-300 ml-0.5"><a href="#recuadroReferencias" class="hover:underline">2</a></sup></p>
+                    <div id="headerMetadataPill" class="flex flex-wrap items-center gap-2 pt-1 text-[11px] text-slate-400 font-medium">
+                        <!-- Dinámico según pestaña -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botonera Central de Selección de Periodo (3 Opciones: Julio - Agosto - Delta) -->
+            <div class="flex items-center gap-1.5 p-1.5 bg-slate-900 border border-slate-700/80 rounded-2xl shadow-inner">
+                <button id="btnTabJulio" type="button" onclick="cambiarPestana('julio')" 
+                        class="px-4 py-2 rounded-xl text-xs font-bold transition-all duration-150 flex items-center gap-1.5 bg-slate-800 text-slate-300 hover:text-white border border-slate-700/70">
+                    <span>📊 Julio 2026</span>
+                </button>
+                <button id="btnTabAgosto" type="button" onclick="cambiarPestana('agosto')" 
+                        class="px-4 py-2 rounded-xl text-xs font-bold transition-all duration-150 flex items-center gap-1.5 tab-btn-active">
+                    <span>📈 Agosto 2026</span>
+                </button>
+                <button id="btnTabSeptiembre" type="button" onclick="cambiarPestana('septiembre')"
+                        class="px-4 py-2 rounded-xl text-xs font-bold transition-all duration-150 flex items-center gap-1.5 bg-slate-800 text-slate-300 hover:text-white border border-slate-700/70">
+                    <span>📈 Septiembre 2026</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 py-6 space-y-8">
+
+        <!-- =================================================================== -->
+        <!-- SECCIÓN 1: 1. Datos Principales                                     -->
+        <!-- =================================================================== -->
+        <section id="seccion1DatosPrincipales" class="section-frame space-y-5">
+            <div class="border-b border-slate-700/80 pb-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                <div>
+                    <h2 class="text-lg sm:text-xl font-extrabold text-white tracking-tight">1. Datos Principales</h2>
+                    <p class="text-xs text-slate-400">Indicadores macro de cartera total, morosidad familiar (situaciones 3 a 5) y desglose por tipo de entidad emisora</p>
+                </div>
+                <span class="text-[11px] font-mono text-slate-400">Fuente: <a href="https://www.bcra.gob.ar/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">Central de Deudores BCRA</a> &amp; Padrón ARCA</span>
+            </div>
+
+            <!-- 4 KPIs Superiores Existentes -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="contenedorKpis">
+                <!-- Se renderiza dinámicamente con renderKpis() -->
+            </div>
+
+            <!-- 3 Frames de Categorías por Tipo de Entidad -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 pt-2 pb-1" id="contenedorSegmentosKpis">
+                <!-- Se renderiza dinámicamente con renderSegmentosKpis() -->
+            </div>
+
+            <!-- Banner Compacto de Multibancarización y Deudores Únicos -->
+            <div id="bannerMultibancarizacion" class="rounded-xl bg-slate-800/90 border border-amber-500/40 px-4 py-3 shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                <!-- Se renderiza dinámicamente con renderSegmentosKpis() -->
+            </div>
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- SECCIÓN 2: 2. Características de los deudores                       -->
+        <!-- =================================================================== -->
+        <section id="seccion2Caracteristicas" class="section-frame space-y-6">
+            <div class="border-b border-slate-700/80 pb-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                <div>
+                    <h2 class="text-lg sm:text-xl font-extrabold text-white tracking-tight">2. Características de los deudores</h2>
+                    <p class="text-xs text-slate-400">Personas humanas según género y edad. Media vs Mediana</p>
+                </div>
+                <span class="text-[11px] font-mono text-slate-400">Universo: Personas humanas adultas vivas (Sit. 3 a 5)</span>
+            </div>
+
+            <!-- Fila Superior: 3 Charts Existentes (Género, Rango Etario, Situaciones 3 a 5) -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Gráfico 2.1: Distribución por género -->
+                <div class="bg-slate-800/80 border border-slate-700/60 rounded-xl p-5 shadow-lg flex flex-col justify-between">
+                    <div>
+                        <h3 id="tituloGraficoGenero" class="text-sm sm:text-base font-bold text-white">Deudores en mora: distribución por género</h3>
+                        <p id="subtituloGraficoGenero" class="hidden"></p>
+                    </div>
+                    <div class="h-80 flex items-center justify-center mt-3 relative">
+                        <canvas id="chartGeneroCanvas"></canvas>
+                    </div>
+                </div>
+
+                <!-- Gráfico 2.2: Distribución por rango etario -->
+                <div class="bg-slate-800/80 border border-slate-700/60 rounded-xl p-5 shadow-lg flex flex-col justify-between">
+                    <div>
+                        <h3 id="tituloGraficoEdad" class="text-sm sm:text-base font-bold text-white">Deudores en mora: distribución por rango etario</h3>
+                        <p id="subtituloGraficoEdad" class="text-xs text-slate-400 mt-0.5">Ordenadas: # de personas | Tamaño de barra: Monto en $</p>
+                    </div>
+                    <div class="h-80 mt-3 relative">
+                        <canvas id="chartEdadCanvas"></canvas>
+                    </div>
+                </div>
+
+                <!-- Gráfico 2.3: Distribución de Deuda por Situación (de 3 a 5) -->
+                <div class="bg-slate-800/80 border border-slate-700/60 rounded-xl p-5 shadow-lg flex flex-col justify-between">
+                    <div>
+                        <h3 id="tituloGraficoSit" class="text-sm sm:text-base font-bold text-white">Distribución de Deuda por Situación (de 3 a 5)</h3>
+                        <p id="subtituloGraficoSit" class="text-xs text-slate-400 mt-0.5">Monto total en $ con etiqueta de # de personas por situación</p>
+                    </div>
+                    <div class="h-80 mt-3 relative">
+                        <canvas id="chartSituacionesCanvas"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fila Inferior: 2 Charts de Monto y Dispersión por Segmento (Media vs. Mediana + Rango Intercuartílico P25 - P75) -->
+            <div id="gridSeccion2Inferior" class="grid grid-cols-1 gap-6">
+                <!-- Gráfico 2.4: Media vs. Mediana de Deuda en Mora -->
+                <div id="cardMediaMediana" class="bg-slate-800/80 border border-slate-700/60 rounded-xl p-5 shadow-lg flex flex-col justify-between">
+                    <div>
+                        <h3 id="tituloGraficoMediaMediana" class="text-sm sm:text-base font-bold text-white">Media vs. Mediana de Deuda en Mora</h3>
+                        <p id="subtituloGraficoMediaMediana" class="text-xs text-slate-400 mt-0.5">comparación por tipo de entidad</p>
+                    </div>
+                    <div class="h-80 mt-3 relative">
+                        <canvas id="chartMediaMedianaCanvas"></canvas>
+                    </div>
+                    <p id="notaGraficoMediaMediana" class="text-[11px] text-slate-400 mt-2 border-t border-slate-700/50 pt-2">La media y la mediana describen aspectos distintos de la distribución de deuda en mora por segmento. Los valores corresponden al período seleccionado. Fuente: BCRA.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- SECCIÓN 3: 3. Estructura de la deuda                                -->
+        <!-- =================================================================== -->
+        <section id="seccion3Estructura" class="section-frame space-y-6">
+            <div class="border-b border-slate-700/80 pb-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                <div>
+                    <h2 class="text-lg sm:text-xl font-extrabold text-white tracking-tight">3. Estructura de la deuda</h2>
+                    <p class="text-xs text-slate-400">Concentración por entidad emisora (Top 10)</p>
+                </div>
+                <span class="text-[11px] font-mono text-slate-400">Fuente: <a href="https://www.bcra.gob.ar/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">BCRA Central de Deudores</a> &amp; <a href="https://www.bcra.gob.ar/PublicacionesEstadisticas/Otros_proveedores_no_financieros_credito.asp" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">Régimen OPRP</a></span>
+            </div>
+
+            <!-- Fila Superior: Top 10 Entidades Emisoras de Crédito (Ancho Completo) -->
+            <div class="bg-slate-800/80 border border-slate-700/60 rounded-xl p-5 shadow-lg flex flex-col justify-between">
+                <div>
+                    <h3 id="tituloGraficoTop" class="text-sm sm:text-base font-bold text-white">Top 10 Entidades Emisoras</h3>
+                    <p id="subtituloGraficoTop" class="text-xs text-slate-400 mt-0.5">Etiqueta: % de deudores de la entidad sobre el total nacional de mora</p>
+                </div>
+                <div class="h-[460px] mt-3 relative">
+                    <canvas id="chartTopEntidadesCanvas"></canvas>
+                </div>
+            </div>
+
+            <!-- Fila Inferior: Tasa de Morosidad Sectorial (%) vs % Deudores Únicos + Distribución de Vínculos Crediticios -->
+            <div id="gridSeccion3Inferior" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Gráfico 3.2: Tasa de Morosidad Sectorial (%), % Morosos s/ Deudores de la Categoría y % s/ Deudores Únicos -->
+                <div id="cardTasaSectorial" class="bg-slate-800/80 border border-slate-700/60 rounded-xl p-5 shadow-lg flex flex-col justify-between">
+                    <div>
+                        <h3 id="tituloGraficoTasaSectorial" class="text-sm sm:text-base font-bold text-white">Tasas de Morosidad por Categoría (%)</h3>
+                        <p id="subtituloGraficoTasaSectorial" class="text-xs text-slate-400 mt-0.5">Comparativa entre porcentaje de mora en pesos, porcentaje de morosos sobre el total de deudores de cada categoría y participación sobre el total de morosos del país</p>
+                    </div>
+                    <div class="h-80 mt-3 relative">
+                        <canvas id="chartTasaSectorialCanvas"></canvas>
+                    </div>
+                    <p class="text-[11px] text-slate-400 mt-2 border-t border-slate-700/50 pt-2">
+                        La comparación muestra tasas de mora de cartera e incidencia de personas morosas por segmento para el período seleccionado.</p>
+                </div>
+
+                <!-- Gráfico 3.3: Distribución de Vínculos Crediticios en Mora -->
+                <div id="cardVinculosMora" class="bg-slate-800/80 border border-slate-700/60 rounded-xl p-5 shadow-lg flex flex-col justify-between">
+                    <div>
+                        <h3 id="tituloGraficoVinculos" class="text-sm sm:text-base font-bold text-white">Distribución de Vínculos Crediticios en Mora</h3>
+                        <p id="subtituloGraficoVinculos" class="text-xs text-slate-400 mt-0.5">Participación de cada tipo de entidad sobre el total de relaciones deudoras en mora (Sit. 3 a 5)</p>
+                    </div>
+                    <div class="h-80 flex items-center justify-center mt-3 relative">
+                        <canvas id="chartVinculosCanvas"></canvas>
+                    </div>
+                    <p class="text-[11px] text-slate-400 mt-2 border-t border-slate-700/50 pt-2">
+                        Los vínculos cuentan relaciones deudor-entidad; una misma persona puede aparecer en más de un segmento. Los valores corresponden al período seleccionado.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- SECCIÓN 4: 4. Comparativa Internacional de tasas de interés         -->
+        <!-- =================================================================== -->
+        <section id="seccion4TasasInternacional" class="section-frame space-y-6">
+            <div class="border-b border-slate-700/80 pb-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                <div>
+                    <h2 class="text-lg sm:text-xl font-extrabold text-white tracking-tight">4. Comparativa Internacional de tasas de interés</h2>
+                    <p class="text-xs text-slate-400">Estructura de spreads (brecha financiera) en Argentina por sector y comparativa internacional (Mayorista vs. Minorista)</p>
+                </div>
+                <span class="text-[11px] font-mono text-slate-400">Fuentes: <a href="https://www.bcra.gob.ar/tasas-de-interes/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">BCRA</a> · <a href="https://data.worldbank.org/indicator/FR.INR.LNDP" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">Banco Mundial</a> · <a href="https://data.imf.org/en/Data-Explorer?datasetUrn=IMF.STA:MFS_IR(9.0.0)&INDICATOR=MFS135_RT_PT_A_PT" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">FMI</a> · <a href="https://statistics.cepal.org/portal/cepalstat/dashboard.html?theme=2&lang=es" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">CEPAL</a></span>
+            </div>
+
+            <!-- Subsección 4.1: Comparativa de Tasas de Interés (Argentina por Segmento) -->
+            <div class="bg-slate-800/80 border border-slate-700/60 rounded-xl p-5 shadow-lg space-y-3">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                    <div>
+                        <h3 id="tituloGraficoTasasArg" class="text-sm sm:text-base font-bold text-white">4.1 Comparativa de Tasas de Interés en Argentina por Tipo de Entidad (TNA %)</h3>
+                        <p id="subtituloGraficoTasasArg" class="text-xs text-slate-400 mt-0.5">Tasa que cobran por prestar (activa), tasa que pagan por captar dinero (pasiva) y brecha de tasas (activa menos pasiva), más el promedio de los 3 sectores</p>
+                    </div>
+                </div>
+                <div class="h-80 mt-2 relative">
+                    <canvas id="chartTasasArgCanvas"></canvas>
+                </div>
+                <p class="text-[11px] text-slate-400 border-t border-slate-700/50 pt-2">
+                    <strong>Fuentes nacionales:</strong> Bancos según el <a href="https://www.bcra.gob.ar/tasas-de-interes/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">Boletín Estadístico del BCRA</a> (préstamos personales frente a plazos fijos); Fintechs y Otros según el <a href="https://www.bcra.gob.ar/PublicacionesEstadisticas/Otros_proveedores_no_financieros_credito.asp" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">Informe de Otros Proveedores de Crédito del BCRA</a>, rendimientos de cuentas remuneradas y financiamiento en el mercado local.
+                </p>
+            </div>
+
+            <!-- Subsección 4.2: Brecha de tasas Mayorista vs. Minorista y Comparativa Internacional Minorista -->
+            <div class="space-y-4">
+                <div class="rounded-xl bg-slate-800/90 border border-blue-500/30 p-4">
+                    <h3 class="text-sm sm:text-base font-bold text-white">4.2 Brecha de tasas: Mayorista vs. Minorista y Comparativa Internacional Minorista (Crédito al Consumo y Familias)</h3>
+                    <p class="text-xs text-slate-300 mt-1 leading-relaxed">
+                        <strong>Por qué separamos las tasas mayoristas de las minoristas:</strong> Las estadísticas habituales del <a href="https://data.worldbank.org/indicator/FR.INR.LNDP" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">Banco Mundial</a> y del <a href="https://data.imf.org/en/Data-Explorer?datasetUrn=IMF.STA:MFS_IR(9.0.0)&INDICATOR=MFS135_RT_PT_A_PT" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">FMI</a> miden lo que les cuesta financiarse a las grandes empresas (créditos comerciales mayoristas), donde Argentina tiene una brecha de tasas de <strong id="notaSpreadMayArg">10,5 puntos porcentuales (pp)</strong>. En cambio, cuando una familia saca un préstamo personal o financia la tarjeta de crédito, las tasas son mucho más altas. Para comparar de forma justa con otros países, mostramos por separado el crédito a empresas a la izquierda y el crédito al consumo de las familias a la derecha.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Gráfico 4.2.A: Brecha Mayorista / Empresas Internacional -->
+                    <div class="bg-slate-800/80 border border-slate-700/60 rounded-xl p-5 shadow-lg flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-sm font-bold text-white">4.2.a Brecha de Tasas Mayorista / Empresas (Criterio Banco Mundial / FMI)</h4>
+                            <p class="text-xs text-slate-400 mt-0.5">Tasa de préstamos a empresas y adelantos comerciales menos tasa pagada por depósitos (en puntos porcentuales, pp)</p>
+                        </div>
+                        <div class="h-[420px] mt-3 relative">
+                            <canvas id="chartSpreadMayoristaCanvas"></canvas>
+                        </div>
+                        <p class="text-[11px] text-slate-400 mt-2 border-t border-slate-700/50 pt-2">
+                            Incluye los promedios de referencia de <strong>América Latina</strong> y <strong>El Mundo</strong>. Fuentes: <a href="https://data.worldbank.org/indicator/FR.INR.LNDP" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">Banco Mundial</a>, <a href="https://data.imf.org/en/Data-Explorer?datasetUrn=IMF.STA:MFS_IR(9.0.0)&INDICATOR=MFS135_RT_PT_A_PT" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">FMI</a> y <a href="https://statistics.cepal.org/portal/cepalstat/dashboard.html?theme=2&lang=es" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">CEPAL</a>.
+                        </p>
+                    </div>
+
+                    <!-- Gráfico 4.2.B: Comparativa Internacional Minorista (Crédito al Consumo y Familias) -->
+                    <div class="bg-slate-800/80 border border-slate-700/60 rounded-xl p-5 shadow-lg flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-sm font-bold text-white">4.2.b Comparativa Internacional Minorista (Brecha en Crédito al Consumo y Familias)</h4>
+                            <p class="text-xs text-slate-400 mt-0.5">Diferencia entre la tasa cobrada en préstamos personales o tarjetas de crédito y la tasa pagada por depósitos (en pp)</p>
+                        </div>
+                        <div class="h-[420px] mt-3 relative">
+                            <canvas id="chartSpreadMinoristaCanvas"></canvas>
+                        </div>
+                        <p class="text-[11px] text-slate-400 mt-2 border-t border-slate-700/50 pt-2">
+                            Fuentes oficiales: <a href="https://www.bcra.gob.ar/tasas-de-interes/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">BCRA</a> y <a href="https://www.bcra.gob.ar/PublicacionesEstadisticas/Otros_proveedores_no_financieros_credito.asp" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">Proveedores No Financieros BCRA</a>, <a href="https://www.bcb.gov.br/estatisticas/txjuros" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">Banco Central de Brasil</a>, <a href="https://www.banxico.org.mx/publicaciones-y-prensa/rib-tarjetas-de-credito/rib-tarjetas-credito--tasas-i.html" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">Banco de México (Tarjetas de Crédito)</a>, <a href="https://www.federalreserve.gov/releases/g19/current/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">Reserva Federal de EE. UU. (Informe G.19)</a>, <a href="https://www.bcu.gub.uy/Servicios-Financieros-SSF/paginas/tasas-medias.aspx" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">Banco Central del Uruguay (Tasas Familias)</a> y <a href="https://www.bcentral.cl/areas/estadisticas/tasas-de-interes" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">Banco Central de Chile (Tasas Consumo)</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- SECCIÓN 5: 5. Tablas informativas                                   -->
+        <!-- =================================================================== -->
+        <section id="seccion5Tablas" class="section-frame space-y-6">
+            <div class="border-b border-slate-700/80 pb-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                <div>
+                    <h2 class="text-lg sm:text-xl font-extrabold text-white tracking-tight">5. Tablas informativas</h2>
+                    <p class="text-xs text-slate-400">Desglose por clasificación oficial del BCRA (Situaciones 1 a 5)</p>
+                </div>
+                <span class="text-[11px] font-mono text-slate-400">Cobertura: 100% Padrón Nacional</span>
+            </div>
+
+            <!-- Tabla 5.1: Tabla Detallada de Clasificación BCRA (Situaciones 1 a 5) -->
+            <div class="bg-slate-800/80 border border-slate-700/60 rounded-xl p-5 shadow-lg space-y-3">
+                <div>
+                    <h3 id="tituloTablaDetallada" class="text-sm sm:text-base font-bold text-white">5.1 Tabla Detallada de Clasificación BCRA (Situaciones 1 a 5)</h3>
+                    <p id="subtituloTablaDetallada" class="text-xs text-slate-400 mt-0.5">% Cartera Total sobre cartera activa · % de la Mora sobre mora grave (Sit 3 a 5)</p>
+                </div>
+                <div class="overflow-x-auto border border-slate-700/50 rounded-lg">
+                    <table class="w-full text-left text-xs text-slate-300" id="tablaDetalladaBcra">
+                        <thead id="theadTablaDetallada" class="bg-slate-900 text-slate-300 uppercase text-[10px] tracking-wider border-b border-slate-700">
+                            <!-- Cabecera dinámica -->
+                        </thead>
+                        <tbody id="tbodyTablaDetallada" class="divide-y divide-slate-700/60 font-mono">
+                            <!-- Filas dinámicas -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recuadro de Referencias (Superíndices 1 y 2) -->
+        <section id="recuadroReferencias" class="rounded-xl bg-slate-900/90 border border-slate-800 px-4 py-3 text-[11px] text-slate-400 space-y-1 shadow-inner">
+            <p class="font-bold text-slate-300 uppercase tracking-wider text-[10px]">Referencias</p>
+            <p><sup>1</sup> Indicadores macro de cartera total, morosidad familiar (situaciones 3 a 5) y desglose por tipo de entidad emisora.</p>
+            <p><sup>2</sup> Banco Central do Brasil, Banco Mundial, CEPAL, Banco Central de Reserva del Perú (BCRP), Banco Central del Uruguay (BCU), FMI, Banco de la República de Colombia, Superintendencia Financiera, Banco de México (Banxico), Federal Reserve Board, Banco Central de Chile (BCCh), CMF, Cámara Argentina.</p>
+        </section>
+
+    </main>
+
+    <footer class="max-w-7xl mx-auto px-6 py-6 text-center text-xs text-slate-500 border-t border-slate-800/80 mt-8">
+        ARGENTINA 2026: TASAS DE INTERÉS Y MOROSIDAD · Procesamiento integral sobre el 100% de la Central de Deudores del Sistema Financiero (<a href="https://www.bcra.gob.ar/" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:underline">BCRA</a>) y Padrón ARCA correspondiente al período seleccionado.
+    </footer>
+
+    <!-- Scripts de Visualización Interactiva Dinámica -->
+    <script>
+        const masterData = {"julio":{"meta":{"periodo":"202607","etiqueta":"Julio 2026","fecha_corte_bcra":"202607","fecha_padron_arca":"2026-08-31","regla_universo":"CUIT personas humanas activas, vivas y >=18 años según Padrón ARCA; mora=3-5.","registros_bcra_leidos":41055396,"personas_elegibles_deudoras":20607555},"kpis":{"deuda_total_txt":"$95,18 billones","deuda_total_num":95183470.862,"deuda_total_sub":"Cartera total elegible (situaciones 1 a 5)","morosos_num":5696474,"morosos_pct_txt":"(27,6%)","morosos_txt":"5.696.474 personas","morosos_sub":"27,6% del universo deudor elegible · Situaciones 3 a 5 · Padrón ARCA 2026-08-31","mora_real_txt":"$14,82 billones","mora_real_pct_txt":"(15,6%)","mora_real_sub":"15,6% de la cartera elegible · Promedio de mora por persona: $ 2,601,545","entidades_txt":"499 activas","entidades_sub":"de un total de 577 códigos en Maeent del período"},"segmentos":[{"id":"bancos","nombre":"Bancos","corto":"Bancos","entidades":54,"cartera_txt":"$76,74 billones","cartera_millones":76743275.21,"pct_cartera_sistema":80.6266828841163,"mora_txt":"$9,49 billones","mora_millones":9490814.24,"pct_mora_sistema":64.04217260376367,"tasa_mora":12.366965332179756,"deudores_totales_1_5":14420799,"vinculos_totales_1_5":19364357,"personas_mora":2396968,"pct_morosos_sobre_deudores_cat":16.621603282869415,"pct_deudores_unicos":42.07809954017169,"pct_vinculos":31.387253617224324,"media":3959508.111914719,"mediana":564000.0,"p25":0.0,"p75":3475000.0,"iqr":3475000.0,"tna_activa":75.0,"tna_pasiva":40.0,"spread":35.0,"color":"#3b82f6","border_class":"border-blue-500/40","bg_class":"from-slate-800 to-blue-950/25","text_accent":"text-blue-400"},{"id":"fintechs","nombre":"Fintechs","corto":"Fintechs","entidades":16,"cartera_txt":"$3,82 billones","cartera_millones":3817993.34,"pct_cartera_sistema":4.011193650981111,"mora_txt":"$0,94 billones","mora_millones":937867.559,"pct_mora_sistema":6.328548275637572,"tasa_mora":24.564410554995888,"deudores_totales_1_5":7322689,"vinculos_totales_1_5":7920976,"personas_mora":1522630,"pct_morosos_sobre_deudores_cat":20.79331786451671,"pct_deudores_unicos":26.72934169452893,"pct_vinculos":17.32269457348658,"media":615952.3712261022,"mediana":146000.0,"p25":66000.0,"p75":567000.0,"iqr":501000.0,"tna_activa":120.0,"tna_pasiva":38.0,"spread":82.0,"color":"#06b6d4","border_class":"border-cyan-500/40","bg_class":"from-slate-800 to-cyan-950/25","text_accent":"text-cyan-400"},{"id":"otros","nombre":"Otros","corto":"Otros","entidades":429,"cartera_txt":"$14,62 billones","cartera_millones":14622202.312,"pct_cartera_sistema":15.362123464902568,"mora_txt":"$4,39 billones","mora_millones":4390950.1,"pct_mora_sistema":29.629279120598756,"tasa_mora":30.0293348861442,"deudores_totales_1_5":8884932,"vinculos_totales_1_5":12588569,"personas_mora":3567116,"pct_morosos_sobre_deudores_cat":40.147926849637116,"pct_deudores_unicos":62.61971879446829,"pct_vinculos":51.290051809289096,"media":1230952.4276754668,"mediana":486000.0,"p25":131000.0,"p75":1362000.0,"iqr":1231000.0,"tna_activa":140.0,"tna_pasiva":44.0,"spread":96.0,"color":"#f43f5e","border_class":"border-rose-500/40","bg_class":"from-slate-800 to-rose-950/25","text_accent":"text-rose-400"}],"resumen_segmentos":{"personas_unicas_pais":5696474,"deudores_unicos_pais_1_5":20607555,"pct_morosos_sobre_deudores_pais":27.64264853351113,"tasa_mora_total":15.569543498246633,"media_pais":2601544.7273172843,"mediana_pais":475000.0,"p25_pais":92000.0,"p75_pais":2020000.0,"iqr_pais":1928000.0,"tna_activa_prom":111.66666666666667,"tna_pasiva_prom":40.666666666666664,"spread_prom":71.0,"vinculos_totales":39873902,"vinculos_mora":9786855,"deudores_suma_sectorial_1_5":30628420,"vinculos_totales_1_5":39873902,"multibancarizados":10497883,"bancos_entidades":54,"bancos_morosos":2396968,"bancos_vinculos":3071825,"fintechs_entidades":16,"fintechs_morosos":1522630,"fintechs_vinculos":1695347,"otros_entidades":429,"otros_morosos":3567116,"otros_vinculos":5019683},"data":{"sexo":[{"sexo":"Varón","cantidad":2838583,"monto_millones":8527898.72,"pct":49.83052674338547,"color":"#3b82f6"},{"sexo":"Mujer","cantidad":2857891,"monto_millones":6291733.179,"pct":50.16947325661453,"color":"#ec4899"}],"edad":[{"rango":"18 a 29 años","cantidad":1326762,"monto_millones":1716167.586,"pct":23.29093400584291,"color":"rgba(6, 182, 212, 0.85)"},{"rango":"30 a 44 años","cantidad":2330194,"monto_millones":6438397.929,"pct":40.90590073789506,"color":"rgba(59, 130, 246, 0.85)"},{"rango":"45 a 59 años","cantidad":1325599,"monto_millones":4757260.238,"pct":23.270517867719576,"color":"rgba(99, 102, 241, 0.85)"},{"rango":"60 años o más","cantidad":713919,"monto_millones":1907806.146,"pct":12.532647388542456,"color":"rgba(245, 158, 11, 0.85)"}],"situaciones":[{"situacion":3,"etiqueta":"3 - Con Problemas (90-180 d)","cantidad_nominal":1540685,"personas_unicas":697236,"monto_millones":3786908.077,"pct_sobre_mora":25.55332077617618,"color":"rgba(248, 113, 113, 0.85)"},{"situacion":4,"etiqueta":"4 - Con Alto Riesgo de Insolvencia (180-365 d)","cantidad_nominal":2846999,"personas_unicas":1356602,"monto_millones":6835673.291,"pct_sobre_mora":46.125796764636625,"color":"rgba(220, 38, 38, 0.90)"},{"situacion":5,"etiqueta":"5 - Irrecuperable (> 365 d)","cantidad_nominal":5399171,"personas_unicas":3642636,"monto_millones":4197050.531,"pct_sobre_mora":28.320882459187192,"color":"rgba(153, 27, 27, 0.98)"}],"top_entidades":[{"entidad":"MERCADOLIBRE S.R.L.","cod_entidad":"72634","label_wrapped":["MERCADOLIBRE S.R.L."],"personas_mora":1107205,"monto_mora_millones":521208.489,"cartera_total_millones":2911084.754,"tasa_mora":17.90427050548182,"dias_prom":1,"refinanciados":0,"color":"rgba(127, 29, 29, 0.95)"},{"entidad":"TARJETA NARANJA S.A.U.","cod_entidad":"70408","label_wrapped":["TARJETA","NARANJA S.A.U."],"personas_mora":1020715,"monto_mora_millones":1260404.766,"cartera_total_millones":5073682.046,"tasa_mora":24.842013247433993,"dias_prom":0,"refinanciados":0,"color":"rgba(153, 27, 27, 0.92)"},{"entidad":"NARANJA DIGITAL COMPAÑÍA FINANCIERA S.A.U.","cod_entidad":"45030","label_wrapped":["NARANJA DIGITAL","COMPAÑÍA FINANCIERA S.A.U."],"personas_mora":709869,"monto_mora_millones":238833.309,"cartera_total_millones":1109018.981,"tasa_mora":21.535547460571376,"dias_prom":37,"refinanciados":84754,"color":"rgba(185, 28, 28, 0.90)"},{"entidad":"BANCO DE GALICIA Y BUENOS AIRES S.A.","cod_entidad":"00007","label_wrapped":["BANCO DE GALICIA","Y BUENOS AIRES S.A."],"personas_mora":499074,"monto_mora_millones":1720606.848,"cartera_total_millones":9602880.742,"tasa_mora":17.91761133171844,"dias_prom":36,"refinanciados":94084,"color":"rgba(220, 38, 38, 0.88)"},{"entidad":"BANCO BBVA ARGENTINA S.A.","cod_entidad":"00017","label_wrapped":["BANCO BBVA","ARGENTINA S.A."],"personas_mora":438746,"monto_mora_millones":840843.435,"cartera_total_millones":6174704.533,"tasa_mora":13.617549317642794,"dias_prom":9,"refinanciados":18192,"color":"rgba(239, 68, 68, 0.85)"},{"entidad":"BANCO DE LA NACION ARGENTINA","cod_entidad":"00011","label_wrapped":["BANCO DE","LA NACION ARGENTINA"],"personas_mora":370213,"monto_mora_millones":1582519.359,"cartera_total_millones":19813681.16,"tasa_mora":7.987003254068716,"dias_prom":14,"refinanciados":31723,"color":"rgba(248, 113, 113, 0.82)"},{"entidad":"RECUPERO DE ACTIVOS FIDEICOMISO FINANCIERO","cod_entidad":"10914","label_wrapped":["RECUPERO DE","ACTIVOS FIDEICOMISO FINANCIERO"],"personas_mora":300014,"monto_mora_millones":165289.274,"cartera_total_millones":165289.274,"tasa_mora":100.0,"dias_prom":0,"refinanciados":0,"color":"rgba(252, 165, 165, 0.80)"},{"entidad":"BANCO DE LA PROVINCIA DE BUENOS AIRES","cod_entidad":"00014","label_wrapped":["BANCO DE LA","PROVINCIA DE BUENOS AIRES"],"personas_mora":272773,"monto_mora_millones":1133798.357,"cartera_total_millones":7022854.884,"tasa_mora":16.144408160605817,"dias_prom":103,"refinanciados":37791,"color":"rgba(254, 202, 202, 0.78)"},{"entidad":"BANCO MACRO S.A.","cod_entidad":"00285","label_wrapped":["BANCO","MACRO S.A."],"personas_mora":234656,"monto_mora_millones":544559.476,"cartera_total_millones":6472853.397,"tasa_mora":8.412974040975334,"dias_prom":27,"refinanciados":28621,"color":"rgba(254, 226, 226, 0.75)"},{"entidad":"BANCO SANTANDER ARGENTINA S.A.","cod_entidad":"00072","label_wrapped":["BANCO SANTANDER","ARGENTINA S.A."],"personas_mora":225279,"monto_mora_millones":1402812.498,"cartera_total_millones":8151222.108,"tasa_mora":17.209842639709358,"dias_prom":47,"refinanciados":36118,"color":"rgba(255, 241, 242, 0.70)"}]},"tabla":[{"situacion":1,"descripcion":"1 - Situación Normal (Atraso <= 31 d)","personas_unicas":14270933,"deudores_nominal":28864858,"monto_millones":76754393.238,"pct_de_cartera":80.63836351301052,"pct_en_mora":0.0},{"situacion":2,"descripcion":"2 - Con Seguimiento Especial (31-90 d)","personas_unicas":640148,"deudores_nominal":1222189,"monto_millones":3609445.725,"pct_de_cartera":3.7920929887428545,"pct_en_mora":0.0},{"situacion":3,"descripcion":"3 - Con Problemas (90-180 d)","personas_unicas":697236,"deudores_nominal":1540685,"monto_millones":3786908.077,"pct_de_cartera":3.9785353934932455,"pct_en_mora":25.55332077617618},{"situacion":4,"descripcion":"4 - Con Alto Riesgo de Insolvencia (180-365 d)","personas_unicas":1356602,"deudores_nominal":2846999,"monto_millones":6835673.291,"pct_de_cartera":7.181575991182938,"pct_en_mora":46.125796764636625},{"situacion":5,"descripcion":"5 - Irrecuperable (> 365 d)","personas_unicas":3642636,"deudores_nominal":5399171,"monto_millones":4197050.531,"pct_de_cartera":4.409432113570451,"pct_en_mora":28.320882459187192}]},"internacional":{"mayorista":{"julio":[{"pais":"Brasil","activa":42.8,"pasiva":10.2,"spread":32.6,"color":"rgba(59, 130, 246, 0.85)","fuente":"Banco Central do Brasil (BCB) / Banco Mundial WDI (FR.INR.LNDP) / CEPALSTAT","fecha_referencia":"2026-07-30"},{"pais":"Argentina (Mayorista / Comercial)","activa":51.5,"pasiva":38.0,"spread":13.5,"color":"rgba(245, 158, 11, 0.95)","fuente":"Banco Central de la República Argentina (BCRA) - Boletín Estadístico / Serie Adelantos C/C vs. BADLAR","fecha_referencia":"2026-07-30"},{"pais":"Perú","activa":13.4,"pasiva":5.5,"spread":7.9,"color":"rgba(59, 130, 246, 0.85)","fuente":"Banco Central de Reserva del Perú (BCRP) / Banco Mundial WDI (FR.INR.LNDP)","fecha_referencia":"2026-07-30"},{"pais":"Uruguay","activa":16.8,"pasiva":9.0,"spread":7.8,"color":"rgba(59, 130, 246, 0.85)","fuente":"Banco Central del Uruguay (BCU) - Tasas Medias del Mercado / CEPALSTAT","fecha_referencia":"2026-07-30"},{"pais":"América Latina (Promedio)","activa":16.0,"pasiva":9.6,"spread":6.4,"color":"rgba(6, 182, 212, 0.95)","fuente":"Banco Mundial (WDI serie FR.INR.LNDP) / CEPALSTAT","fecha_referencia":"2026-07-30"},{"pais":"El Mundo (Promedio Global)","activa":11.4,"pasiva":5.5,"spread":5.9,"color":"rgba(168, 85, 247, 0.95)","fuente":"Banco Mundial - Indicadores del Desarrollo Mundial (WDI FR.INR.LNDP) / FMI","fecha_referencia":"2026-07-30"},{"pais":"Colombia","activa":17.5,"pasiva":12.0,"spread":5.5,"color":"rgba(59, 130, 246, 0.85)","fuente":"Banco de la República de Colombia / Superintendencia Financiera / CEPAL","fecha_referencia":"2026-07-30"},{"pais":"México","activa":12.0,"pasiva":7.0,"spread":5.0,"color":"rgba(59, 130, 246, 0.85)","fuente":"Banco de México (Banxico) / Banco Mundial WDI / CEPAL","fecha_referencia":"2026-07-30"},{"pais":"Estados Unidos","activa":8.5,"pasiva":5.25,"spread":3.25,"color":"rgba(59, 130, 246, 0.85)","fuente":"Federal Reserve Board (Informe H.15 de Tasas de Interés) / Banco Mundial WDI","fecha_referencia":"2026-07-30"},{"pais":"Chile","activa":8.6,"pasiva":6.0,"spread":2.6,"color":"rgba(59, 130, 246, 0.85)","fuente":"Banco Central de Chile (BCCh) - Estadísticas Monetarias / CMF / CEPAL","fecha_referencia":"2026-07-30"}],"agosto":[{"pais":"Brasil","activa":42.5,"pasiva":10.0,"spread":32.5,"color":"rgba(59, 130, 246, 0.85)","fuente":"Banco Central do Brasil (BCB) / Banco Mundial WDI (FR.INR.LNDP) / CEPALSTAT","fecha_referencia":"2026-08-30"},{"pais":"Argentina (Mayorista / Comercial)","activa":49.8,"pasiva":38.0,"spread":11.8,"color":"rgba(245, 158, 11, 0.95)","fuente":"Banco Central de la República Argentina (BCRA) - Boletín Estadístico / Serie Adelantos C/C vs. BADLAR","fecha_referencia":"2026-08-30"},{"pais":"Perú","activa":13.2,"pasiva":5.4,"spread":7.8,"color":"rgba(59, 130, 246, 0.85)","fuente":"Banco Central de Reserva del Perú (BCRP) / Banco Mundial WDI (FR.INR.LNDP)","fecha_referencia":"2026-08-30"},{"pais":"Uruguay","activa":16.5,"pasiva":8.8,"spread":7.7,"color":"rgba(59, 130, 246, 0.85)","fuente":"Banco Central del Uruguay (BCU) - Tasas Medias del Mercado / CEPALSTAT","fecha_referencia":"2026-08-30"},{"pais":"América Latina (Promedio)","activa":15.8,"pasiva":9.5,"spread":6.3,"color":"rgba(6, 182, 212, 0.95)","fuente":"Banco Mundial (WDI serie FR.INR.LNDP) / CEPALSTAT","fecha_referencia":"2026-08-30"},{"pais":"El Mundo (Promedio Global)","activa":11.2,"pasiva":5.4,"spread":5.8,"color":"rgba(168, 85, 247, 0.95)","fuente":"Banco Mundial - Indicadores del Desarrollo Mundial (WDI FR.INR.LNDP) / FMI","fecha_referencia":"2026-08-30"},{"pais":"Colombia","activa":17.2,"pasiva":11.8,"spread":5.4,"color":"rgba(59, 130, 246, 0.85)","fuente":"Banco de la República de Colombia / Superintendencia Financiera / CEPAL","fecha_referencia":"2026-08-30"},{"pais":"México","activa":11.8,"pasiva":6.8,"spread":5.0,"color":"rgba(59, 130, 246, 0.85)","fuente":"Banco de México (Banxico) / Banco Mundial WDI / CEPAL","fecha_referencia":"2026-08-30"},{"pais":"Estados Unidos","activa":8.5,"pasiva":5.2,"spread":3.3,"color":"rgba(59, 130, 246, 0.85)","fuente":"Federal Reserve Board (Informe H.15 de Tasas de Interés) / Banco Mundial WDI","fecha_referencia":"2026-08-30"},{"pais":"Chile","activa":8.4,"pasiva":5.9,"spread":2.5,"color":"rgba(59, 130, 246, 0.85)","fuente":"Banco Central de Chile (BCCh) - Estadísticas Monetarias / CMF / CEPAL","fecha_referencia":"2026-08-30"}],"septiembre":[{"pais":"Brasil","activa":43.0,"pasiva":10.5,"spread":32.5,"color":"rgba(59, 130, 246, 0.85)","fuente":"Banco Central do Brasil (BCB) / Banco Mundial WDI (FR.INR.LNDP) / CEPALSTAT","fecha_referencia":"2026-09-30"},{"pais":"Argentina (Mayorista / Comercial)","activa":48.0,"pasiva":37.5,"spread":10.5,"color":"rgba(245, 158, 11, 0.95)","fuente":"Banco Central de la República Argentina (BCRA) - Boletín Estadístico / Serie Adelantos C/C vs. BADLAR","fecha_referencia":"2026-09-30"},{"pais":"Perú","activa":12.9,"pasiva":5.2,"spread":7.7,"color":"rgba(59, 130, 246, 0.85)","fuente":"Banco Central de Reserva del Perú (BCRP) / Banco Mundial WDI (FR.INR.LNDP)","fecha_referencia":"2026-09-30"},{"pais":"Uruguay","activa":16.3,"pasiva":8.6,"spread":7.7,"color":"rgba(59, 130, 246, 0.85)","fuente":"Banco Central del Uruguay (BCU) - Tasas Medias del Mercado / CEPALSTAT","fecha_referencia":"2026-09-30"},{"pais":"América Latina (Promedio)","activa":15.6,"pasiva":9.3,"spread":6.3,"color":"rgba(6, 182, 212, 0.95)","fuente":"Banco Mundial (WDI serie FR.INR.LNDP) / CEPALSTAT","fecha_referencia":"2026-09-30"},{"pais":"El Mundo (Promedio Global)","activa":11.0,"pasiva":5.2,"spread":5.8,"color":"rgba(168, 85, 247, 0.95)","fuente":"Banco Mundial - Indicadores del Desarrollo Mundial (WDI FR.INR.LNDP) / FMI","fecha_referencia":"2026-09-30"},{"pais":"Colombia","activa":16.8,"pasiva":11.5,"spread":5.3,"color":"rgba(59, 130, 246, 0.85)","fuente":"Banco de la República de Colombia / Superintendencia Financiera / CEPAL","fecha_referencia":"2026-09-30"},{"pais":"México","activa":11.5,"pasiva":6.5,"spread":5.0,"color":"rgba(59, 130, 246, 0.85)","fuente":"Banco de México (Banxico) / Banco Mundial WDI / CEPAL","fecha_referencia":"2026-09-30"},{"pais":"Estados Unidos","activa":8.0,"pasiva":4.8,"spread":3.2,"color":"rgba(59, 130, 246, 0.85)","fuente":"Federal Reserve Board (Informe H.15 de Tasas de Interés) / Banco Mundial WDI","fecha_referencia":"2026-09-30"},{"pais":"Chile","activa":8.1,"pasiva":5.6,"spread":2.5,"color":"rgba(59, 130, 246, 0.85)","fuente":"Banco Central de Chile (BCCh) - Estadísticas Monetarias / CMF / CEPAL","fecha_referencia":"2026-09-30"}]},"minorista":{"julio":[{"pais":"Argentina (Otros: Tarjetas y Comercios)","activa":140.0,"pasiva":44.0,"spread":96.0,"color":"rgba(245, 158, 11, 0.95)","fuente":"BCRA - Régimen OPRP (Otros Proveedores No Financieros de Crédito) / CNV Fideicomisos Financieros","fecha_referencia":"2026-07-30"},{"pais":"Argentina (Fintechs: Billeteras)","activa":120.0,"pasiva":38.0,"spread":82.0,"color":"rgba(245, 158, 11, 0.95)","fuente":"BCRA (Régimen OPRP Comunicación 'A' 6970) / Cámara Argentina Fintech / Rendimientos Cuentas Remuneradas","fecha_referencia":"2026-07-30"},{"pais":"Brasil (Crédito Personal y Rotativo)","activa":82.0,"pasiva":10.0,"spread":72.0,"color":"rgba(59, 130, 246, 0.85)","fuente":"Banco Central do Brasil (BCB) - Estatísticas Monetárias e de Crédito (Taxas de Juros Médias PF - Crédito Livre)","fecha_referencia":"2026-07-30"},{"pais":"Argentina (Bancos: Préstamos Personales)","activa":75.0,"pasiva":40.0,"spread":35.0,"color":"rgba(245, 158, 11, 0.95)","fuente":"Banco Central de la República Argentina (BCRA) - Boletín Estadístico / Comunicaciones 'A'","fecha_referencia":"2026-07-30"},{"pais":"México (Tarjetas de Crédito)","activa":31.3,"pasiva":6.8,"spread":24.5,"color":"rgba(59, 130, 246, 0.85)","fuente":"Banco de México (Banxico) - Reporte de Indicadores Básicos de Tarjetas de Crédito (RIB) / TEPP para no totaleros","fecha_referencia":"2026-07-30"},{"pais":"Estados Unidos (Tarjetas de Crédito)","activa":22.5,"pasiva":5.0,"spread":17.5,"color":"rgba(59, 130, 246, 0.85)","fuente":"Federal Reserve Board - Informe G.19 de Crédito al Consumo / Serie TERMCBCCINTNS","fecha_referencia":"2026-07-30"},{"pais":"Uruguay (Crédito al Consumo Familias)","activa":25.6,"pasiva":8.8,"spread":16.8,"color":"rgba(59, 130, 246, 0.85)","fuente":"Banco Central del Uruguay (BCU) - Superintendencia de Servicios Financieros (SSF) / Tasas Medias de Mercado","fecha_referencia":"2026-07-30"},{"pais":"Chile (Crédito de Consumo Familias)","activa":20.1,"pasiva":5.9,"spread":14.2,"color":"rgba(59, 130, 246, 0.85)","fuente":"Banco Central de Chile (BCCh) - Base de Datos Estadísticos / CMF Chile","fecha_referencia":"2026-07-30"}],"agosto":[{"pais":"Argentina (Otros: Tarjetas y Comercios)","activa":135.0,"pasiva":42.0,"spread":93.0,"color":"rgba(245, 158, 11, 0.95)","fuente":"BCRA - Régimen OPRP (Otros Proveedores No Financieros de Crédito) / CNV Fideicomisos Financieros","fecha_referencia":"2026-08-30"},{"pais":"Argentina (Fintechs: Billeteras)","activa":115.0,"pasiva":36.0,"spread":79.0,"color":"rgba(245, 158, 11, 0.95)","fuente":"BCRA (Régimen OPRP Comunicación 'A' 6970) / Cámara Argentina Fintech / Rendimientos Cuentas Remuneradas","fecha_referencia":"2026-08-30"},{"pais":"Brasil (Crédito Personal y Rotativo)","activa":82.0,"pasiva":10.0,"spread":72.0,"color":"rgba(59, 130, 246, 0.85)","fuente":"Banco Central do Brasil (BCB) - Estatísticas Monetárias e de Crédito (Taxas de Juros Médias PF - Crédito Livre)","fecha_referencia":"2026-08-30"},{"pais":"Argentina (Bancos: Préstamos Personales)","activa":72.0,"pasiva":38.0,"spread":34.0,"color":"rgba(245, 158, 11, 0.95)","fuente":"Banco Central de la República Argentina (BCRA) - Boletín Estadístico / Comunicaciones 'A'","fecha_referencia":"2026-08-30"},{"pais":"México (Tarjetas de Crédito)","activa":31.3,"pasiva":6.8,"spread":24.5,"color":"rgba(59, 130, 246, 0.85)","fuente":"Banco de México (Banxico) - Reporte de Indicadores Básicos de Tarjetas de Crédito (RIB) / TEPP para no totaleros","fecha_referencia":"2026-08-30"},{"pais":"Estados Unidos (Tarjetas de Crédito)","activa":22.5,"pasiva":5.0,"spread":17.5,"color":"rgba(59, 130, 246, 0.85)","fuente":"Federal Reserve Board - Informe G.19 de Crédito al Consumo / Serie TERMCBCCINTNS","fecha_referencia":"2026-08-30"},{"pais":"Uruguay (Crédito al Consumo Familias)","activa":25.6,"pasiva":8.8,"spread":16.8,"color":"rgba(59, 130, 246, 0.85)","fuente":"Banco Central del Uruguay (BCU) - Superintendencia de Servicios Financieros (SSF) / Tasas Medias de Mercado","fecha_referencia":"2026-08-30"},{"pais":"Chile (Crédito de Consumo Familias)","activa":20.1,"pasiva":5.9,"spread":14.2,"color":"rgba(59, 130, 246, 0.85)","fuente":"Banco Central de Chile (BCCh) - Base de Datos Estadísticos / CMF Chile","fecha_referencia":"2026-08-30"}],"septiembre":[{"pais":"Argentina (Otros: Tarjetas y Comercios)","activa":130.0,"pasiva":41.0,"spread":89.0,"color":"rgba(245, 158, 11, 0.95)","fuente":"BCRA - Régimen OPRP (Otros Proveedores No Financieros de Crédito) / CNV Fideicomisos Financieros","fecha_referencia":"2026-09-30"},{"pais":"Argentina (Fintechs: Billeteras)","activa":110.0,"pasiva":35.0,"spread":75.0,"color":"rgba(245, 158, 11, 0.95)","fuente":"BCRA (Régimen OPRP Comunicación 'A' 6970) / Cámara Argentina Fintech / Rendimientos Cuentas Remuneradas","fecha_referencia":"2026-09-30"},{"pais":"Brasil (Crédito Personal y Rotativo)","activa":82.5,"pasiva":10.5,"spread":72.0,"color":"rgba(59, 130, 246, 0.85)","fuente":"Banco Central do Brasil (BCB) - Estatísticas Monetárias e de Crédito (Taxas de Juros Médias PF - Crédito Livre)","fecha_referencia":"2026-09-30"},{"pais":"Argentina (Bancos: Préstamos Personales)","activa":70.0,"pasiva":37.5,"spread":32.5,"color":"rgba(245, 158, 11, 0.95)","fuente":"Banco Central de la República Argentina (BCRA) - Boletín Estadístico / Comunicaciones 'A'","fecha_referencia":"2026-09-30"},{"pais":"México (Tarjetas de Crédito)","activa":31.0,"pasiva":6.5,"spread":24.5,"color":"rgba(59, 130, 246, 0.85)","fuente":"Banco de México (Banxico) - Reporte de Indicadores Básicos de Tarjetas de Crédito (RIB) / TEPP para no totaleros","fecha_referencia":"2026-09-30"},{"pais":"Estados Unidos (Tarjetas de Crédito)","activa":22.1,"pasiva":4.8,"spread":17.3,"color":"rgba(59, 130, 246, 0.85)","fuente":"Federal Reserve Board - Informe G.19 de Crédito al Consumo / Serie TERMCBCCINTNS","fecha_referencia":"2026-09-30"},{"pais":"Uruguay (Crédito al Consumo Familias)","activa":25.4,"pasiva":8.6,"spread":16.8,"color":"rgba(59, 130, 246, 0.85)","fuente":"Banco Central del Uruguay (BCU) - Superintendencia de Servicios Financieros (SSF) / Tasas Medias de Mercado","fecha_referencia":"2026-09-30"},{"pais":"Chile (Crédito de Consumo Familias)","activa":19.8,"pasiva":5.6,"spread":14.2,"color":"rgba(59, 130, 246, 0.85)","fuente":"Banco Central de Chile (BCCh) - Base de Datos Estadísticos / CMF Chile","fecha_referencia":"2026-09-30"}]}},"agosto":{"meta":{"periodo":"202608","etiqueta":"Agosto 2026","fecha_corte_bcra":"202608","fecha_padron_arca":"2026-08-31","regla_universo":"CUIT personas humanas activas, vivas y >=18 años según Padrón ARCA; mora=3-5.","registros_bcra_leidos":41572383,"personas_elegibles_deudoras":20775012},"kpis":{"deuda_total_txt":"$97,23 billones","deuda_total_num":97233005.022,"deuda_total_sub":"Cartera total elegible (situaciones 1 a 5)","morosos_num":5735981,"morosos_pct_txt":"(27,6%)","morosos_txt":"5.735.981 personas","morosos_sub":"27,6% del universo deudor elegible · Situaciones 3 a 5 · Padrón ARCA 2026-08-31","mora_real_txt":"$15,16 billones","mora_real_pct_txt":"(15,6%)","mora_real_sub":"15,6% de la cartera elegible · Promedio de mora por persona: $ 2,642,407","entidades_txt":"510 activas","entidades_sub":"de un total de 567 códigos en Maeent del período"},"segmentos":[{"id":"bancos","nombre":"Bancos","corto":"Bancos","entidades":55,"cartera_txt":"$78,17 billones","cartera_millones":78165576.338,"pct_cartera_sistema":80.38996256498933,"mora_txt":"$9,59 billones","mora_millones":9594343.008,"pct_mora_sistema":63.300601978465345,"tasa_mora":12.27438401594147,"deudores_totales_1_5":14503101,"vinculos_totales_1_5":19523409,"personas_mora":2467699,"pct_morosos_sobre_deudores_cat":17.014974935360375,"pct_deudores_unicos":43.0213942479935,"pct_vinculos":32.01969363437163,"media":3887971.3482073788,"mediana":510000.0,"p25":0.0,"p75":3363000.0,"iqr":3363000.0,"tna_activa":72.0,"tna_pasiva":38.0,"spread":34.0,"color":"#3b82f6","border_class":"border-blue-500/40","bg_class":"from-slate-800 to-blue-950/25","text_accent":"text-blue-400"},{"id":"fintechs","nombre":"Fintechs","corto":"Fintechs","entidades":16,"cartera_txt":"$4,04 billones","cartera_millones":4039856.492,"pct_cartera_sistema":4.154820157091658,"mora_txt":"$0,97 billones","mora_millones":974240.611,"pct_mora_sistema":6.427747798546071,"tasa_mora":24.115723242378976,"deudores_totales_1_5":7709427,"vinculos_totales_1_5":8335729,"personas_mora":1591555,"pct_morosos_sobre_deudores_cat":20.644270968516857,"pct_deudores_unicos":27.746866665004642,"pct_vinculos":17.8111213369931,"media":612131.2873259172,"mediana":145000.0,"p25":66000.0,"p75":551000.0,"iqr":485000.0,"tna_activa":115.0,"tna_pasiva":36.0,"spread":79.0,"color":"#06b6d4","border_class":"border-cyan-500/40","bg_class":"from-slate-800 to-cyan-950/25","text_accent":"text-cyan-400"},{"id":"otros","nombre":"Otros","corto":"Otros","entidades":439,"cartera_txt":"$15,03 billones","cartera_millones":15027572.192,"pct_cartera_sistema":15.455217277919006,"mora_txt":"$4,59 billones","mora_millones":4588212.222,"pct_mora_sistema":30.271650222988576,"tasa_mora":30.531959277111685,"deudores_totales_1_5":8901123,"vinculos_totales_1_5":12548052,"personas_mora":3537766,"pct_morosos_sobre_deudores_cat":39.74516473932559,"pct_deudores_unicos":61.67673846897331,"pct_vinculos":50.169185028635276,"media":1296923.6015044523,"mediana":522000.0,"p25":144000.0,"p75":1440000.0,"iqr":1296000.0,"tna_activa":135.0,"tna_pasiva":42.0,"spread":93.0,"color":"#f43f5e","border_class":"border-rose-500/40","bg_class":"from-slate-800 to-rose-950/25","text_accent":"text-rose-400"}],"resumen_segmentos":{"personas_unicas_pais":5735981,"deudores_unicos_pais_1_5":20775012,"pct_morosos_sobre_deudores_pais":27.61000089915712,"tasa_mora_total":15.588118291284541,"media_pais":2642406.9119127137,"mediana_pais":496000.0,"p25_pais":94000.0,"p75_pais":2073000.0,"iqr_pais":1979000.0,"tna_activa_prom":107.33333333333333,"tna_pasiva_prom":38.666666666666664,"spread_prom":68.66666666666666,"vinculos_totales":40407190,"vinculos_mora":9898630,"deudores_suma_sectorial_1_5":31113651,"vinculos_totales_1_5":40407190,"multibancarizados":10671392,"bancos_entidades":55,"bancos_morosos":2467699,"bancos_vinculos":3169511,"fintechs_entidades":16,"fintechs_morosos":1591555,"fintechs_vinculos":1763057,"otros_entidades":439,"otros_morosos":3537766,"otros_vinculos":4966062},"data":{"sexo":[{"sexo":"Varón","cantidad":2848973,"monto_millones":8735791.338,"pct":49.66845252799826,"color":"#3b82f6"},{"sexo":"Mujer","cantidad":2887008,"monto_millones":6421004.503,"pct":50.33154747200174,"color":"#ec4899"}],"edad":[{"rango":"18 a 29 años","cantidad":1344309,"monto_millones":1733110.34,"pct":23.436427003506463,"color":"rgba(6, 182, 212, 0.85)"},{"rango":"30 a 44 años","cantidad":2343647,"monto_millones":6555788.017,"pct":40.85869531297262,"color":"rgba(59, 130, 246, 0.85)"},{"rango":"45 a 59 años","cantidad":1333223,"monto_millones":4894340.856,"pct":23.24315579148536,"color":"rgba(99, 102, 241, 0.85)"},{"rango":"60 años o más","cantidad":714802,"monto_millones":1973556.628,"pct":12.461721892035555,"color":"rgba(245, 158, 11, 0.85)"}],"situaciones":[{"situacion":3,"etiqueta":"3 - Con Problemas (90-180 d)","cantidad_nominal":1483937,"personas_unicas":667858,"monto_millones":3641774.324,"pct_sobre_mora":24.027336398823767,"color":"rgba(248, 113, 113, 0.85)"},{"situacion":4,"etiqueta":"4 - Con Alto Riesgo de Insolvencia (180-365 d)","cantidad_nominal":2852736,"personas_unicas":1330686,"monto_millones":6854294.051,"pct_sobre_mora":45.22257951419219,"color":"rgba(220, 38, 38, 0.90)"},{"situacion":5,"etiqueta":"5 - Irrecuperable (> 365 d)","cantidad_nominal":5561957,"personas_unicas":3737437,"monto_millones":4660727.466,"pct_sobre_mora":30.750084086984042,"color":"rgba(153, 27, 27, 0.98)"}],"top_entidades":[{"entidad":"MERCADOLIBRE S.R.L.","cod_entidad":"72634","label_wrapped":["MERCADOLIBRE S.R.L."],"personas_mora":1165078,"monto_mora_millones":563928.176,"cartera_total_millones":3131710.429,"tasa_mora":18.00703445561122,"dias_prom":1,"refinanciados":0,"color":"rgba(127, 29, 29, 0.95)"},{"entidad":"TARJETA NARANJA S.A.U.","cod_entidad":"70408","label_wrapped":["TARJETA","NARANJA S.A.U."],"personas_mora":1027511,"monto_mora_millones":1284897.709,"cartera_total_millones":5135604.781,"tasa_mora":25.019404019438696,"dias_prom":0,"refinanciados":0,"color":"rgba(153, 27, 27, 0.92)"},{"entidad":"NARANJA DIGITAL COMPAÑÍA FINANCIERA S.A.U.","cod_entidad":"45030","label_wrapped":["NARANJA DIGITAL","COMPAÑÍA FINANCIERA S.A.U."],"personas_mora":727296,"monto_mora_millones":249224.889,"cartera_total_millones":1117578.657,"tasa_mora":22.300433838725322,"dias_prom":39,"refinanciados":87143,"color":"rgba(185, 28, 28, 0.90)"},{"entidad":"BANCO DE GALICIA Y BUENOS AIRES S.A.","cod_entidad":"00007","label_wrapped":["BANCO DE GALICIA","Y BUENOS AIRES S.A."],"personas_mora":514404,"monto_mora_millones":1631969.605,"cartera_total_millones":9580761.469,"tasa_mora":17.03381939191873,"dias_prom":33,"refinanciados":89751,"color":"rgba(220, 38, 38, 0.88)"},{"entidad":"BANCO BBVA ARGENTINA S.A.","cod_entidad":"00017","label_wrapped":["BANCO BBVA","ARGENTINA S.A."],"personas_mora":455066,"monto_mora_millones":793847.357,"cartera_total_millones":6240646.616,"tasa_mora":12.720594608973768,"dias_prom":10,"refinanciados":18806,"color":"rgba(239, 68, 68, 0.85)"},{"entidad":"BANCO DE LA NACION ARGENTINA","cod_entidad":"00011","label_wrapped":["BANCO DE","LA NACION ARGENTINA"],"personas_mora":383223,"monto_mora_millones":1692086.995,"cartera_total_millones":20472532.009,"tasa_mora":8.26515740337412,"dias_prom":16,"refinanciados":41796,"color":"rgba(248, 113, 113, 0.82)"},{"entidad":"RECUPERO DE ACTIVOS FIDEICOMISO FINANCIERO","cod_entidad":"10914","label_wrapped":["RECUPERO DE","ACTIVOS FIDEICOMISO FINANCIERO"],"personas_mora":297360,"monto_mora_millones":164375.815,"cartera_total_millones":164375.815,"tasa_mora":100.0,"dias_prom":0,"refinanciados":0,"color":"rgba(252, 165, 165, 0.80)"},{"entidad":"BANCO DE LA PROVINCIA DE BUENOS AIRES","cod_entidad":"00014","label_wrapped":["BANCO DE LA","PROVINCIA DE BUENOS AIRES"],"personas_mora":285652,"monto_mora_millones":1206246.347,"cartera_total_millones":7144100.576,"tasa_mora":16.88450959176418,"dias_prom":103,"refinanciados":40427,"color":"rgba(254, 202, 202, 0.78)"},{"entidad":"BANCO MACRO S.A.","cod_entidad":"00285","label_wrapped":["BANCO","MACRO S.A."],"personas_mora":246800,"monto_mora_millones":584424.73,"cartera_total_millones":6655933.533,"tasa_mora":8.780507303782898,"dias_prom":29,"refinanciados":30770,"color":"rgba(254, 226, 226, 0.75)"},{"entidad":"BANCO SANTANDER ARGENTINA S.A.","cod_entidad":"00072","label_wrapped":["BANCO SANTANDER","ARGENTINA S.A."],"personas_mora":232358,"monto_mora_millones":1368815.201,"cartera_total_millones":8151396.21,"tasa_mora":16.79240176450704,"dias_prom":46,"refinanciados":35531,"color":"rgba(255, 241, 242, 0.70)"}]},"tabla":[{"situacion":1,"descripcion":"1 - Situación Normal (Atraso <= 31 d)","personas_unicas":14406575,"deudores_nominal":29326793,"monto_millones":78535992.758,"pct_de_cartera":80.77092005973732,"pct_en_mora":0.0},{"situacion":2,"descripcion":"2 - Con Seguimiento Especial (31-90 d)","personas_unicas":632456,"deudores_nominal":1181767,"monto_millones":3540216.423,"pct_de_cartera":3.640961648978131,"pct_en_mora":0.0},{"situacion":3,"descripcion":"3 - Con Problemas (90-180 d)","personas_unicas":667858,"deudores_nominal":1483937,"monto_millones":3641774.324,"pct_de_cartera":3.7454096200935165,"pct_en_mora":24.027336398823767},{"situacion":4,"descripcion":"4 - Con Alto Riesgo de Insolvencia (180-365 d)","personas_unicas":1330686,"deudores_nominal":2852736,"monto_millones":6854294.051,"pct_de_cartera":7.0493491890424895,"pct_en_mora":45.22257951419219},{"situacion":5,"descripcion":"5 - Irrecuperable (> 365 d)","personas_unicas":3737437,"deudores_nominal":5561957,"monto_millones":4660727.466,"pct_de_cartera":4.793359482148537,"pct_en_mora":30.750084086984042}]},"septiembre":{"meta":{"periodo":"202609","etiqueta":"Septiembre 2026","fecha_corte_bcra":"202609","fecha_padron_arca":"2026-10-30","regla_universo":"CUIT personas humanas activas, vivas y >=18 años según Padrón ARCA; mora=3-5.","registros_bcra_leidos":42271017,"personas_elegibles_deudoras":20964477},"kpis":{"deuda_total_txt":"$99,65 billones","deuda_total_num":99651381.493,"deuda_total_sub":"Cartera total elegible (situaciones 1 a 5)","morosos_num":5830144,"morosos_pct_txt":"(27,8%)","morosos_txt":"5.830.144 personas","morosos_sub":"27,8% del universo deudor elegible · Situaciones 3 a 5 · Padrón ARCA 2026-10-30","mora_real_txt":"$15,16 billones","mora_real_pct_txt":"(15,2%)","mora_real_sub":"15,2% de la cartera elegible · Promedio de mora por persona: $ 2,600,952","entidades_txt":"506 activas","entidades_sub":"de un total de 580 códigos en Maeent del período"},"segmentos":[{"id":"bancos","nombre":"Bancos","corto":"Bancos","entidades":55,"cartera_txt":"$80,00 billones","cartera_millones":79998880.506,"pct_cartera_sistema":80.27874707549289,"mora_txt":"$9,37 billones","mora_millones":9368140.664,"pct_mora_sistema":61.779131422282184,"tasa_mora":11.710339700687912,"deudores_totales_1_5":14558985,"vinculos_totales_1_5":19697244,"personas_mora":2438082,"pct_morosos_sobre_deudores_cat":16.746236087199758,"pct_deudores_unicos":41.81855542504611,"pct_vinculos":30.9840476002214,"media":3842422.307371122,"mediana":474000.0,"p25":0.0,"p75":3267000.0,"iqr":3267000.0,"tna_activa":70.0,"tna_pasiva":37.5,"spread":32.5,"color":"#3b82f6","border_class":"border-blue-500/40","bg_class":"from-slate-800 to-blue-950/25","text_accent":"text-blue-400"},{"id":"fintechs","nombre":"Fintechs","corto":"Fintechs","entidades":16,"cartera_txt":"$4,29 billones","cartera_millones":4287942.742,"pct_cartera_sistema":4.302943599734446,"mora_txt":"$1,03 billones","mora_millones":1026424.907,"pct_mora_sistema":6.768860705554491,"tasa_mora":23.9374676566052,"deudores_totales_1_5":7947792,"vinculos_totales_1_5":8597427,"personas_mora":1636528,"pct_morosos_sobre_deudores_cat":20.590976714035797,"pct_deudores_unicos":28.070112847984547,"pct_vinculos":17.934935162489126,"media":627196.6669681178,"mediana":154000.0,"p25":72000.0,"p75":564000.0,"iqr":492000.0,"tna_activa":110.0,"tna_pasiva":35.0,"spread":75.0,"color":"#06b6d4","border_class":"border-cyan-500/40","bg_class":"from-slate-800 to-cyan-950/25","text_accent":"text-cyan-400"},{"id":"otros","nombre":"Otros","corto":"Otros","entidades":435,"cartera_txt":"$15,36 billones","cartera_millones":15364558.245,"pct_cartera_sistema":15.418309324772665,"mora_txt":"$4,77 billones","mora_millones":4769358.635,"pct_mora_sistema":31.452007872163325,"tasa_mora":31.041300107356264,"deudores_totales_1_5":9028235,"vinculos_totales_1_5":12770594,"personas_mora":3650926,"pct_morosos_sobre_deudores_cat":40.4389783828179,"pct_deudores_unicos":62.62154073724423,"pct_vinculos":51.08101723728947,"media":1306342.1814082235,"mediana":520000.0,"p25":143000.0,"p75":1444000.0,"iqr":1301000.0,"tna_activa":130.0,"tna_pasiva":41.0,"spread":89.0,"color":"#f43f5e","border_class":"border-rose-500/40","bg_class":"from-slate-800 to-rose-950/25","text_accent":"text-rose-400"}],"resumen_segmentos":{"personas_unicas_pais":5830144,"deudores_unicos_pais_1_5":20964477,"pct_morosos_sobre_deudores_pais":27.809632455891936,"tasa_mora_total":15.216973391447851,"media_pais":2600951.915767432,"mediana_pais":494000.0,"p25_pais":95000.0,"p75_pais":2042000.0,"iqr_pais":1947000.0,"tna_activa_prom":103.33333333333333,"tna_pasiva_prom":37.833333333333336,"spread_prom":65.5,"vinculos_totales":41065265,"vinculos_mora":10117600,"deudores_suma_sectorial_1_5":31535012,"vinculos_totales_1_5":41065265,"multibancarizados":10865566,"bancos_entidades":55,"bancos_morosos":2438082,"bancos_vinculos":3134842,"fintechs_entidades":16,"fintechs_morosos":1636528,"fintechs_vinculos":1814585,"otros_entidades":435,"otros_morosos":3650926,"otros_vinculos":5168173},"data":{"sexo":[{"sexo":"Varón","cantidad":2894079,"monto_millones":8752311.26,"pct":49.6399231305436,"color":"#3b82f6"},{"sexo":"Mujer","cantidad":2936065,"monto_millones":6411612.946,"pct":50.36007686945639,"color":"#ec4899"}],"edad":[{"rango":"18 a 29 años","cantidad":1338266,"monto_millones":1676136.097,"pct":22.95425293097392,"color":"rgba(6, 182, 212, 0.85)"},{"rango":"30 a 44 años","cantidad":2387398,"monto_millones":6509475.361,"pct":40.9492115460613,"color":"rgba(59, 130, 246, 0.85)"},{"rango":"45 a 59 años","cantidad":1368367,"monto_millones":4968976.199,"pct":23.470552356854306,"color":"rgba(99, 102, 241, 0.85)"},{"rango":"60 años o más","cantidad":736113,"monto_millones":2009336.549,"pct":12.625983166110476,"color":"rgba(245, 158, 11, 0.85)"}],"situaciones":[{"situacion":3,"etiqueta":"3 - Con Problemas (90-180 d)","cantidad_nominal":1384356,"personas_unicas":618874,"monto_millones":3351133.342,"pct_sobre_mora":22.099380717519264,"color":"rgba(248, 113, 113, 0.85)"},{"situacion":4,"etiqueta":"4 - Con Alto Riesgo de Insolvencia (180-365 d)","cantidad_nominal":2763120,"personas_unicas":1262646,"monto_millones":6617641.682,"pct_sobre_mora":43.64069347815362,"color":"rgba(220, 38, 38, 0.90)"},{"situacion":5,"etiqueta":"5 - Irrecuperable (> 365 d)","cantidad_nominal":5970124,"personas_unicas":3948624,"monto_millones":5195149.182,"pct_sobre_mora":34.25992580432712,"color":"rgba(153, 27, 27, 0.98)"}],"top_entidades":[{"entidad":"MERCADOLIBRE S.R.L.","cod_entidad":"72634","label_wrapped":["MERCADOLIBRE S.R.L."],"personas_mora":1192252,"monto_mora_millones":598779.472,"cartera_total_millones":3346626.727,"tasa_mora":17.8920304188439,"dias_prom":1,"refinanciados":0,"color":"rgba(127, 29, 29, 0.95)"},{"entidad":"TARJETA NARANJA S.A.U.","cod_entidad":"70408","label_wrapped":["TARJETA","NARANJA S.A.U."],"personas_mora":1049467,"monto_mora_millones":1323718.085,"cartera_total_millones":5186742.198,"tasa_mora":25.52118525401983,"dias_prom":0,"refinanciados":0,"color":"rgba(153, 27, 27, 0.92)"},{"entidad":"NARANJA DIGITAL COMPAÑÍA FINANCIERA S.A.U.","cod_entidad":"45030","label_wrapped":["NARANJA DIGITAL","COMPAÑÍA FINANCIERA S.A.U."],"personas_mora":741150,"monto_mora_millones":245278.442,"cartera_total_millones":1142232.838,"tasa_mora":21.473593985397223,"dias_prom":41,"refinanciados":89657,"color":"rgba(185, 28, 28, 0.90)"},{"entidad":"BANCO DE GALICIA Y BUENOS AIRES S.A.","cod_entidad":"00007","label_wrapped":["BANCO DE GALICIA","Y BUENOS AIRES S.A."],"personas_mora":521914,"monto_mora_millones":1535545.466,"cartera_total_millones":9669581.646,"tasa_mora":15.880164439536085,"dias_prom":32,"refinanciados":88788,"color":"rgba(220, 38, 38, 0.88)"},{"entidad":"BANCO BBVA ARGENTINA S.A.","cod_entidad":"00017","label_wrapped":["BANCO BBVA","ARGENTINA S.A."],"personas_mora":460353,"monto_mora_millones":773291.49,"cartera_total_millones":6590807.159,"tasa_mora":11.73287992418411,"dias_prom":9,"refinanciados":17901,"color":"rgba(239, 68, 68, 0.85)"},{"entidad":"BANCO DE LA NACION ARGENTINA","cod_entidad":"00011","label_wrapped":["BANCO DE","LA NACION ARGENTINA"],"personas_mora":383040,"monto_mora_millones":1722449.701,"cartera_total_millones":21105521.48,"tasa_mora":8.161133107429857,"dias_prom":18,"refinanciados":58047,"color":"rgba(248, 113, 113, 0.82)"},{"entidad":"RECUPERO DE ACTIVOS FIDEICOMISO FINANCIERO","cod_entidad":"10914","label_wrapped":["RECUPERO DE","ACTIVOS FIDEICOMISO FINANCIERO"],"personas_mora":296820,"monto_mora_millones":164213.706,"cartera_total_millones":164213.706,"tasa_mora":100.0,"dias_prom":0,"refinanciados":0,"color":"rgba(252, 165, 165, 0.80)"},{"entidad":"BANCO DE LA PROVINCIA DE BUENOS AIRES","cod_entidad":"00014","label_wrapped":["BANCO DE LA","PROVINCIA DE BUENOS AIRES"],"personas_mora":285136,"monto_mora_millones":1183022.775,"cartera_total_millones":7281381.796,"tasa_mora":16.24722900329013,"dias_prom":107,"refinanciados":41022,"color":"rgba(254, 202, 202, 0.78)"},{"entidad":"BANCO MACRO S.A.","cod_entidad":"00285","label_wrapped":["BANCO","MACRO S.A."],"personas_mora":231466,"monto_mora_millones":560802.085,"cartera_total_millones":6789620.007,"tasa_mora":8.259697662340766,"dias_prom":33,"refinanciados":32342,"color":"rgba(254, 226, 226, 0.75)"},{"entidad":"BANCO SANTANDER ARGENTINA S.A.","cod_entidad":"00072","label_wrapped":["BANCO SANTANDER","ARGENTINA S.A."],"personas_mora":208193,"monto_mora_millones":1306956.422,"cartera_total_millones":8233519.817,"tasa_mora":15.873605105091107,"dias_prom":51,"refinanciados":35635,"color":"rgba(255, 241, 242, 0.70)"}]},"tabla":[{"situacion":1,"descripcion":"1 - Situación Normal (Atraso <= 31 d)","personas_unicas":14508016,"deudores_nominal":29786849,"monto_millones":81031115.654,"pct_de_cartera":81.31459337539843,"pct_en_mora":0.0},{"situacion":2,"descripcion":"2 - Con Seguimiento Especial (31-90 d)","personas_unicas":626317,"deudores_nominal":1160816,"monto_millones":3456341.633,"pct_de_cartera":3.4684332331537124,"pct_en_mora":0.0},{"situacion":3,"descripcion":"3 - Con Problemas (90-180 d)","personas_unicas":618874,"deudores_nominal":1384356,"monto_millones":3351133.342,"pct_de_cartera":3.362856883459664,"pct_en_mora":22.099380717519264},{"situacion":4,"descripcion":"4 - Con Alto Riesgo de Insolvencia (180-365 d)","personas_unicas":1262646,"deudores_nominal":2763120,"monto_millones":6617641.682,"pct_de_cartera":6.640792714413955,"pct_en_mora":43.64069347815362},{"situacion":5,"descripcion":"5 - Irrecuperable (> 365 d)","personas_unicas":3948624,"deudores_nominal":5970124,"monto_millones":5195149.182,"pct_de_cartera":5.213323793574235,"pct_en_mora":34.25992580432712}]}};
+
+        let pestanaActiva = 'agosto';
+        let chartGenero = null;
+        let chartEdad = null;
+        let chartSit = null;
+        let chartMediaMediana = null;
+        let chartIqr = null;
+        let chartTop = null;
+        let chartTasaSectorial = null;
+        let chartVinculos = null;
+        let chartTasasArg = null;
+        let chartSpreadMayorista = null;
+        let chartSpreadMinorista = null;
+
+        function fmtARS(num, decimals = 1) {
+            if (num === null || num === undefined || isNaN(num)) return "$ 0,0";
+            return "$ " + Number(num).toLocaleString('es-AR', {
+                minimumFractionDigits: decimals,
+                maximumFractionDigits: decimals
+            });
+        }
+        function fmtSignARS(num, decimals = 0) {
+            if (num === null || num === undefined || isNaN(num)) return "$ 0";
+            const s = Number(num) > 0 ? "+$ " : (Number(num) < 0 ? "-$ " : "$ ");
+            return s + Math.abs(Number(num)).toLocaleString('es-AR', {
+                minimumFractionDigits: decimals,
+                maximumFractionDigits: decimals
+            });
+        }
+        function fmtInt(num) {
+            if (num === null || num === undefined || isNaN(num)) return "0";
+            return Number(num).toLocaleString('es-AR', { maximumFractionDigits: 0 });
+        }
+        function fmtSignInt(num) {
+            if (num === null || num === undefined || isNaN(num)) return "0";
+            const s = Number(num) > 0 ? "+" : "";
+            return s + Number(num).toLocaleString('es-AR', { maximumFractionDigits: 0 });
+        }
+        function fmtSignPct(num, decimals = 2) {
+            if (num === null || num === undefined || isNaN(num)) return "0,0%";
+            const s = Number(num) > 0 ? "+" : "";
+            return s + Number(num).toLocaleString('es-AR', { minimumFractionDigits: decimals, maximumFractionDigits: decimals }) + "%";
+        }
+        function fmtSignPP(num, decimals = 2) {
+            if (num === null || num === undefined || isNaN(num)) return "0,0 pp";
+            const s = Number(num) > 0 ? "+" : "";
+            return s + Number(num).toLocaleString('es-AR', { minimumFractionDigits: decimals, maximumFractionDigits: decimals }) + " pp";
+        }
+
+        function cambiarPestana(nuevaPestana) {
+            if (!masterData[nuevaPestana]) return;
+            pestanaActiva = nuevaPestana;
+
+            // Actualizar botones
+            ['julio', 'agosto', 'septiembre'].forEach(p => {
+                const btn = document.getElementById('btnTab' + p.charAt(0).toUpperCase() + p.slice(1));
+                if (btn) {
+                    if (p === pestanaActiva) {
+                        btn.className = "px-4 py-2 rounded-xl text-xs font-bold transition-all duration-150 flex items-center gap-1.5 tab-btn-active";
+                    } else {
+                        btn.className = "px-4 py-2 rounded-xl text-xs font-bold transition-all duration-150 flex items-center gap-1.5 bg-slate-800 text-slate-300 hover:text-white border border-slate-700/70";
+                    }
+                }
+            });
+            // Metadata del período provista por el procesamiento validado.
+            const metaPill = document.getElementById('headerMetadataPill');
+            const meta = masterData[pestanaActiva].meta;
+            if (metaPill && meta) {
+                metaPill.innerHTML = `
+                    <span class="px-2.5 py-0.5 rounded bg-slate-800/90 text-slate-300 font-mono border border-slate-700/60">Período: ${meta.etiqueta}</span>
+                    <span>·</span>
+                    <span class="text-slate-300">${Number(meta.registros_bcra_leidos).toLocaleString('es-AR')} registros · Padrón ARCA ${meta.fecha_padron_arca}</span>
+                `;
+            }
+
+
+            // Ocultar o mostrar gráficos sin sentido comparativo intermensual en Delta
+            const cardVinculos = document.getElementById('cardVinculosMora');
+            const gridSec3Inf = document.getElementById('gridSeccion3Inferior');
+            const sec4Tasas = document.getElementById('seccion4TasasInternacional');
+
+            if (pestanaActiva === 'delta') {
+                if (cardVinculos) cardVinculos.classList.add('hidden');
+                if (gridSec3Inf) gridSec3Inf.className = "grid grid-cols-1 gap-6";
+                if (sec4Tasas) sec4Tasas.classList.add('hidden');
+            } else {
+                if (cardVinculos) cardVinculos.classList.remove('hidden');
+                if (gridSec3Inf) gridSec3Inf.className = "grid grid-cols-1 lg:grid-cols-2 gap-6";
+                if (sec4Tasas) sec4Tasas.classList.remove('hidden');
+            }
+
+            renderKpis();
+            renderSegmentosKpis();
+            renderGraficos();
+            renderTablas();
+        }
+
+        function obtenerMesPrevio(mesActual) {
+            if (mesActual === 'agosto') return { id: 'julio', nombre: 'julio' };
+            if (mesActual === 'septiembre') return { id: 'agosto', nombre: 'agosto' };
+            return null;
+        }
+
+        function fmtDeltaSimplePct(actual, previo, nombrePrevio) {
+            if (!nombrePrevio || previo === undefined || previo === null || previo === 0) return '';
+            const diffPct = ((actual - previo) / previo) * 100;
+            const redondeado = Math.round(diffPct * 10) / 10;
+            if (Math.abs(redondeado) < 0.05) {
+                return `(0% respecto a ${nombrePrevio})`;
+            }
+            const signo = redondeado > 0 ? '+' : '';
+            return `(${signo}${redondeado.toLocaleString('es-AR', {minimumFractionDigits: 1, maximumFractionDigits: 1})}% respecto a ${nombrePrevio})`;
+        }
+
+        function fmtDeltaSimplePunto(actualPct, previoPct, nombrePrevio) {
+            if (!nombrePrevio || previoPct === undefined || previoPct === null) return '';
+            const diff = actualPct - previoPct;
+            const redondeado = Math.round(diff * 10) / 10;
+            if (Math.abs(redondeado) < 0.05) {
+                return `(0% respecto a ${nombrePrevio})`;
+            }
+            const signo = redondeado > 0 ? '+' : '';
+            return `(${signo}${redondeado.toLocaleString('es-AR', {minimumFractionDigits: 1, maximumFractionDigits: 1})}% respecto a ${nombrePrevio})`;
+        }
+
+        function renderKpis() {
+            const cont = document.getElementById('contenedorKpis');
+            if (!cont) return;
+
+            const k = masterData[pestanaActiva].kpis;
+            const res = masterData[pestanaActiva].resumen_segmentos;
+            const segs = masterData[pestanaActiva].segmentos;
+            const moraMillonesActual = segs.reduce((acc, s) => acc + s.mora_millones, 0);
+
+            const prevInfo = obtenerMesPrevio(pestanaActiva);
+            const prevData = prevInfo ? masterData[prevInfo.id] : null;
+            const moraMillonesPrev = prevData ? prevData.segmentos.reduce((acc, s) => acc + s.mora_millones, 0) : null;
+
+            const deltaDeudaTotal = prevData ? fmtDeltaSimplePct(k.deuda_total_num, prevData.kpis.deuda_total_num, prevInfo.nombre) : '';
+            const deltaMorososPers = prevData ? fmtDeltaSimplePct(k.morosos_num, prevData.kpis.morosos_num, prevInfo.nombre) : '';
+            const deltaMorososPct = prevData ? fmtDeltaSimplePunto(res.pct_morosos_sobre_deudores_pais, prevData.resumen_segmentos.pct_morosos_sobre_deudores_pais, prevInfo.nombre) : '';
+            const deltaMoraRealMonto = prevData ? fmtDeltaSimplePct(moraMillonesActual, moraMillonesPrev, prevInfo.nombre) : '';
+            const deltaMoraRealPct = prevData ? fmtDeltaSimplePunto(res.tasa_mora_total, prevData.resumen_segmentos.tasa_mora_total, prevInfo.nombre) : '';
+
+            const totalMaeent = (k.entidades_sub.match(/\d+/) || ['567'])[0];
+            const pctCarteraDeudora = res.pct_morosos_sobre_deudores_pais.toLocaleString('es-AR', {minimumFractionDigits: 1, maximumFractionDigits: 1});
+            const pctCarteraTotal = res.tasa_mora_total.toLocaleString('es-AR', {minimumFractionDigits: 1, maximumFractionDigits: 1});
+            const moraRealFmt = k.mora_real_txt.replace(/^\$\s?/, '$ ');
+            const deudaTotalFmt = k.deuda_total_txt.replace(/^\$\s?/, '$ ');
+
+            cont.innerHTML = `
+                <!-- KPI 1: Deuda Total -->
+                <div class="bg-slate-800/90 border border-slate-700/70 rounded-xl p-4 shadow-md flex flex-col justify-between">
+                    <div>
+                        <p class="text-[11px] uppercase font-bold tracking-wide text-slate-400">Deuda total</p>
+                        <h3 class="text-xl sm:text-2xl font-black text-white mt-1 font-mono">${deudaTotalFmt}</h3>
+                        ${deltaDeudaTotal ? `<p class="text-[11px] text-slate-300 font-mono mt-0.5">${deltaDeudaTotal}</p>` : ''}
+                    </div>
+                    <p class="text-[11px] text-emerald-400 mt-2 font-medium">${k.deuda_total_sub}</p>
+                </div>
+
+                <!-- KPI 2: Morosidad de las Familias -->
+                <div class="bg-slate-800/90 border border-rose-500/50 rounded-xl p-4 shadow-md bg-gradient-to-br from-slate-800 to-rose-950/25 flex flex-col justify-between">
+                    <div>
+                        <p class="text-[11px] uppercase font-bold tracking-wide text-rose-300">Morosidad de las Familias</p>
+                        <h3 class="text-xl sm:text-2xl font-black text-rose-500 mt-1 font-mono">${k.morosos_txt}</h3>
+                        ${deltaMorososPers ? `<p class="text-[11px] text-rose-200/90 font-mono mt-0.5">${deltaMorososPers}</p>` : ''}
+                    </div>
+                    <p class="text-[11px] text-rose-300/90 mt-2 font-medium">
+                        ${pctCarteraDeudora}% de la cartera deudora ${deltaMorososPct ? `<span class="text-rose-200/80 font-mono">${deltaMorososPct}</span>` : ''}
+                    </p>
+                </div>
+
+                <!-- KPI 3: Monto total de situación de mora real -->
+                <div class="bg-slate-800/90 border border-rose-500/40 rounded-xl p-4 shadow-md bg-gradient-to-br from-slate-800 to-rose-950/25 flex flex-col justify-between">
+                    <div>
+                        <p class="text-[11px] uppercase font-bold tracking-wide text-rose-300">Monto total de situación de mora real</p>
+                        <h3 class="text-xl sm:text-2xl font-black text-rose-400 mt-1 font-mono">${moraRealFmt}</h3>
+                        ${deltaMoraRealMonto ? `<p class="text-[11px] text-rose-200/90 font-mono mt-0.5">${deltaMoraRealMonto}</p>` : ''}
+                    </div>
+                    <p class="text-[11px] text-rose-300/90 mt-2 font-medium">
+                        ${pctCarteraTotal}% de la cartera total ${deltaMoraRealPct ? `<span class="text-rose-200/80 font-mono">${deltaMoraRealPct}</span>` : ''} · Promedio de mora por persona: $ ${fmtInt(res.media_pais)}
+                    </p>
+                </div>
+
+                <!-- KPI 4: Entidades con créditos en mora -->
+                <div class="bg-slate-800/90 border border-blue-500/40 rounded-xl p-4 shadow-md bg-gradient-to-br from-slate-800 to-blue-950/25 flex flex-col justify-between">
+                    <div>
+                        <p class="text-[11px] uppercase font-bold tracking-wide text-blue-300">Entidades con créditos en mora</p>
+                        <h3 class="text-xl sm:text-2xl font-black text-blue-400 mt-1 font-mono">${k.entidades_txt}</h3>
+                    </div>
+                    <p class="text-[11px] text-blue-300/80 mt-2 font-medium">de un total de ${totalMaeent} registradas en el BCRA (incluye bancos, fintechs / prestamistas no bancarios)</p>
+                </div>
+            `;
+        }
+
+        function renderSegmentosKpis() {
+            const cont = document.getElementById('contenedorSegmentosKpis');
+            const banner = document.getElementById('bannerMultibancarizacion');
+            if (!cont || !banner) return;
+
+            const segs = masterData[pestanaActiva].segmentos;
+            const res = masterData[pestanaActiva].resumen_segmentos;
+            const prevInfo = obtenerMesPrevio(pestanaActiva);
+            const prevSegs = prevInfo ? masterData[prevInfo.id].segmentos : null;
+
+            const nombresTarjeta = {
+                'bancos': 'Bancos',
+                'fintechs': 'Fintechs Financieras',
+                'otros': 'Otros'
+            };
+
+            cont.innerHTML = segs.map((s, idx) => {
+                const tituloSeg = nombresTarjeta[s.id] || s.nombre;
+                const montoFmt = s.mora_txt.replace(/^\$\s?/, '$ ');
+                const pctMorososSeg = s.pct_deudores_unicos.toLocaleString('es-AR', {minimumFractionDigits: 1, maximumFractionDigits: 1});
+                const sPrev = prevSegs ? prevSegs[idx] : null;
+
+                const deltaMontoSeg = sPrev ? fmtDeltaSimplePct(s.mora_millones, sPrev.mora_millones, prevInfo.nombre) : '';
+                const deltaPersSeg = sPrev ? fmtDeltaSimplePct(s.personas_mora, sPrev.personas_mora, prevInfo.nombre) : '';
+                const deltaPctSeg = sPrev ? fmtDeltaSimplePunto(s.pct_deudores_unicos, sPrev.pct_deudores_unicos, prevInfo.nombre) : '';
+
+                return `
+                    <div class="bg-slate-800/90 border ${s.border_class} rounded-2xl p-5 sm:p-6 shadow-lg bg-gradient-to-br ${s.bg_class} flex flex-col justify-between space-y-4">
+                        <div class="flex items-center justify-between border-b border-slate-700/60 pb-3">
+                            <span class="text-sm font-extrabold uppercase tracking-wide ${s.text_accent}">${tituloSeg}</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-slate-900/80 text-[11px] font-mono text-slate-300 border border-slate-700/60">
+                                ${s.entidades} entidades activas
+                            </span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 text-xs py-1">
+                            <div>
+                                <p class="text-[10px] text-slate-400 uppercase font-semibold">Monto en mora</p>
+                                <p class="text-lg sm:text-xl font-black text-white font-mono mt-0.5">${montoFmt}</p>
+                                ${deltaMontoSeg ? `<p class="text-[11px] text-slate-300 font-mono mt-0.5">${deltaMontoSeg}</p>` : ''}
+                            </div>
+                            <div>
+                                <p class="text-[10px] text-slate-400 uppercase font-semibold">Morosidad</p>
+                                <p class="text-lg sm:text-xl font-black ${s.text_accent} font-mono mt-0.5">${fmtInt(s.personas_mora)} deudores</p>
+                                ${deltaPersSeg ? `<p class="text-[11px] text-slate-300 font-mono mt-0.5">${deltaPersSeg}</p>` : ''}
+                            </div>
+                        </div>
+                        <div class="rounded-xl bg-slate-900/85 border border-amber-500/30 px-3.5 py-2.5 text-center text-xs font-mono">
+                            <div>
+                                <span class="text-amber-300 font-bold">${pctMorososSeg}%</span>
+                                <span class="text-slate-200"> de los morosos pertenecen a este segmento</span>
+                            </div>
+                            ${deltaPctSeg ? `<p class="text-[11px] text-amber-200/80 mt-0.5">${deltaPctSeg}</p>` : ''}
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 pt-2 border-t border-slate-700/50 text-xs font-mono">
+                            <div>
+                                <span class="text-slate-400 block text-[10px] uppercase">Media</span>
+                                <span class="text-slate-100 font-bold text-sm">$ ${fmtInt(s.media)}</span>
+                            </div>
+                            <div>
+                                <span class="text-slate-400 block text-[10px] uppercase">Mediana</span>
+                                <span class="text-emerald-400 font-bold text-sm">$ ${fmtInt(s.mediana)}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            banner.innerHTML = `
+                <div class="flex items-center gap-2.5">
+                    <span class="text-amber-400 text-base font-bold">ℹ️</span>
+                    <p class="text-xs text-slate-200 leading-snug">
+                        <strong>Incidencia de Mora por Categoría (Sit. 3-5 ÷ Sit. 1-5) y Multibancarización:</strong> Dentro de su propia cartera de clientes activos (Sit. 1 a 5), <strong>Bancos</strong> registra un <strong>${segs[0].pct_morosos_sobre_deudores_cat.toLocaleString('es-AR', {minimumFractionDigits: 1, maximumFractionDigits: 1})}% de deudores morosos</strong> (${fmtInt(segs[0].personas_mora)} s/ ${fmtInt(segs[0].deudores_totales_1_5)}), <strong>Fintechs</strong> un <strong>${segs[1].pct_morosos_sobre_deudores_cat.toLocaleString('es-AR', {minimumFractionDigits: 1, maximumFractionDigits: 1})}%</strong> (${fmtInt(segs[1].personas_mora)} s/ ${fmtInt(segs[1].deudores_totales_1_5)}) y <strong>Otros (Tarjetas y Comercios)</strong> un <strong>${segs[2].pct_morosos_sobre_deudores_cat.toLocaleString('es-AR', {minimumFractionDigits: 1, maximumFractionDigits: 1})}%</strong> (${fmtInt(segs[2].personas_mora)} s/ ${fmtInt(segs[2].deudores_totales_1_5)}). En el consolidado nacional (${fmtInt(res.personas_unicas_pais)} morosos únicos s/ ${fmtInt(res.deudores_unicos_pais_1_5)} deudores únicos 1-5), la tasa general es <strong>${res.pct_morosos_sobre_deudores_pais.toLocaleString('es-AR', {minimumFractionDigits: 1, maximumFractionDigits: 1})}%</strong>.
+                    </p>
+                </div>
+                <span class="text-[10px] font-mono text-amber-300 whitespace-nowrap bg-amber-500/10 px-2.5 py-1 rounded border border-amber-500/30">Base País 1-5: ${fmtInt(res.deudores_unicos_pais_1_5)} únicos</span>
+            `;
+        }
+
+        function destruirGraficos() {
+            [
+                chartGenero, chartEdad, chartSit, chartMediaMediana, chartIqr,
+                chartTop, chartTasaSectorial, chartVinculos,
+                chartTasasArg, chartSpreadMayorista, chartSpreadMinorista
+            ].forEach(ch => {
+                if (ch) ch.destroy();
+            });
+            chartGenero = chartEdad = chartSit = chartMediaMediana = chartIqr = null;
+            chartTop = chartTasaSectorial = chartVinculos = null;
+            chartTasasArg = chartSpreadMayorista = chartSpreadMinorista = null;
+        }
+
+        function renderGraficos() {
+            destruirGraficos();
+
+            const titGen = document.getElementById('tituloGraficoGenero');
+            const subGen = document.getElementById('subtituloGraficoGenero');
+            const titEdad = document.getElementById('tituloGraficoEdad');
+            const subEdad = document.getElementById('subtituloGraficoEdad');
+            const titSit = document.getElementById('tituloGraficoSit');
+            const subSit = document.getElementById('subtituloGraficoSit');
+            const titMM = document.getElementById('tituloGraficoMediaMediana');
+            const subMM = document.getElementById('subtituloGraficoMediaMediana');
+            const titIqr = document.getElementById('tituloGraficoIqr');
+            const subIqr = document.getElementById('subtituloGraficoIqr');
+            const titTop = document.getElementById('tituloGraficoTop');
+            const subTop = document.getElementById('subtituloGraficoTop');
+            const titTasaSec = document.getElementById('tituloGraficoTasaSectorial');
+            const subTasaSec = document.getElementById('subtituloGraficoTasaSectorial');
+
+            if (pestanaActiva === 'delta') {
+                titGen.textContent = "Variación de Deudores en Mora por Género";
+                subGen.textContent = "Diferencia neta de personas en mora 3-5 (Agosto vs Julio)";
+                titEdad.textContent = "Variación de Deudores en Mora por Rango Etario";
+                subEdad.textContent = "Diferencia absoluta (# personas) y relativa (%) Agosto vs Julio";
+                titSit.textContent = "Variación de Deuda y Personas por Situación (3 a 5)";
+                subSit.textContent = "Diferencia de personas y monto adeudado (Agosto vs Julio)";
+                titMM.textContent = "Variación de Deuda Media vs. Mediana por Tipo de Entidad";
+                subMM.textContent = "Cambio absoluto en $ y porcentual (%) entre Julio y Agosto 2026";
+                if (titIqr) titIqr.textContent = "Variación de Cuartiles de Deuda: Δ P25, Δ Mediana P50 y Δ P75 ($)";
+                if (subIqr) subIqr.textContent = "Cambio absoluto en pesos ($) por cuartil posicional entre Julio y Agosto 2026";
+                titTop.textContent = "Top 10 Entidades: Variación de Personas en Mora (3 a 5)";
+                subTop.textContent = "Incremento o reducción neta de deudores por entidad (Agosto vs Julio)";
+                titTasaSec.textContent = "Variación de Tasas de Mora por Categoría: Cartera ($), % Morosos s/ Deudores Categoría (1-5) y % s/ Únicos (en pp)";
+                subTasaSec.textContent = "Diferencia en puntos porcentuales (pp) entre Agosto y Julio 2026 para las tres métricas sectoriales";
+
+                // 1. Gráfico Género Delta (Escala corregida con padding superior y suggestedMax: 32000)
+                const dSexo = masterData.delta.sexo;
+                chartGenero = new Chart(document.getElementById('chartGeneroCanvas').getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: dSexo.map(d => d.sexo),
+                        datasets: [{
+                            label: 'Variación de Personas',
+                            data: dSexo.map(d => d.delta_cant),
+                            backgroundColor: dSexo.map(d => d.color),
+                            borderWidth: 1,
+                            borderColor: '#ffffff',
+                            borderRadius: 6,
+                            barThickness: 40
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        layout: { padding: { top: 40 } },
+                        plugins: {
+                            legend: { display: false },
+                            datalabels: {
+                                anchor: 'end',
+                                align: 'top',
+                                color: '#ffffff',
+                                font: { size: 11, weight: 'bold' },
+                                formatter: function(val, ctx) {
+                                    const item = dSexo[ctx.dataIndex];
+                                    return `${fmtSignInt(item.delta_cant)} pers
+(${fmtSignPct(item.delta_cant_pct)})`;
+                                },
+                                textAlign: 'center'
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(ctx) {
+                                        const d = dSexo[ctx.dataIndex];
+                                        return [
+                                            `${d.sexo}: ${fmtSignInt(d.delta_cant)} personas (${fmtSignPct(d.delta_cant_pct)})`,
+                                            `Jul: ${fmtInt(d.cant_jul)} -> Ago: ${fmtInt(d.cant_ago)}`,
+                                            `Delta Monto: ${fmtARS(d.delta_monto, 1)} M (${fmtSignPct(d.delta_monto_pct)})`
+                                        ];
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                suggestedMax: 32000,
+                                grace: '20%',
+                                grid: { color: 'rgba(255,255,255,0.05)' },
+                                ticks: { color: '#94a3b8', callback: v => fmtSignInt(v) }
+                            },
+                            x: { grid: { display: false }, ticks: { color: '#cbd5e1', font: { weight: 'bold' } } }
+                        }
+                    }
+                });
+
+                // 2. Gráfico Edad Delta (Escala simétrica corregida con soporte para barras negativas)
+                const dEdad = masterData.delta.edad;
+                chartEdad = new Chart(document.getElementById('chartEdadCanvas').getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: dEdad.map(d => d.rango),
+                        datasets: [{
+                            label: 'Variación Personas',
+                            data: dEdad.map(d => d.delta_cant),
+                            backgroundColor: dEdad.map(d => d.delta_cant >= 0 ? 'rgba(59, 130, 246, 0.85)' : 'rgba(16, 185, 129, 0.85)'),
+                            borderWidth: 1,
+                            borderColor: 'rgba(255,255,255,0.2)',
+                            borderRadius: 6,
+                            barThickness: 28
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        layout: { padding: { top: 40, bottom: 30 } },
+                        plugins: {
+                            legend: { display: false },
+                            datalabels: {
+                                anchor: function(ctx) {
+                                    return ctx.dataset.data[ctx.dataIndex] >= 0 ? 'end' : 'start';
+                                },
+                                align: function(ctx) {
+                                    return ctx.dataset.data[ctx.dataIndex] >= 0 ? 'top' : 'bottom';
+                                },
+                                color: '#f1f5f9',
+                                font: { size: 10, weight: 'bold' },
+                                formatter: function(val, ctx) {
+                                    const d = dEdad[ctx.dataIndex];
+                                    return `${fmtSignInt(d.delta_cant)}
+(${fmtSignPct(d.delta_cant_pct)})`;
+                                },
+                                textAlign: 'center'
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(ctx) {
+                                        const d = dEdad[ctx.dataIndex];
+                                        return [
+                                            `${d.rango}: ${fmtSignInt(d.delta_cant)} personas (${fmtSignPct(d.delta_cant_pct)})`,
+                                            `Jul: ${fmtInt(d.cant_jul)} -> Ago: ${fmtInt(d.cant_ago)}`,
+                                            `Delta Deuda: ${fmtARS(d.delta_monto, 1)} M (${fmtSignPct(d.delta_monto_pct)})`
+                                        ];
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                suggestedMax: 26000,
+                                suggestedMin: -9000,
+                                grid: { color: 'rgba(255,255,255,0.05)' },
+                                ticks: { color: '#94a3b8', callback: v => fmtSignInt(v) }
+                            },
+                            x: { grid: { display: false }, ticks: { color: '#cbd5e1', font: { size: 9.5 } } }
+                        }
+                    }
+                });
+
+                // 3. Gráfico Situaciones Delta
+                const dSit = masterData.delta.situaciones;
+                chartSit = new Chart(document.getElementById('chartSituacionesCanvas').getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: dSit.map(d => d.etiqueta),
+                        datasets: [{
+                            label: 'Variación de Deuda en Millones',
+                            data: dSit.map(d => d.delta_monto),
+                            backgroundColor: dSit.map(d => d.delta_monto >= 0 ? 'rgba(239, 68, 68, 0.85)' : 'rgba(16, 185, 129, 0.85)'),
+                            borderRadius: 6,
+                            borderWidth: 1,
+                            borderColor: 'rgba(255,255,255,0.2)'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        layout: { padding: { top: 40, bottom: 30 } },
+                        plugins: {
+                            legend: { display: false },
+                            datalabels: {
+                                anchor: function(ctx) {
+                                    return ctx.dataset.data[ctx.dataIndex] >= 0 ? 'end' : 'start';
+                                },
+                                align: function(ctx) {
+                                    return ctx.dataset.data[ctx.dataIndex] >= 0 ? 'top' : 'bottom';
+                                },
+                                color: '#f8fafc',
+                                font: { size: 10, weight: 'bold' },
+                                formatter: function(val, ctx) {
+                                    const d = dSit[ctx.dataIndex];
+                                    return `${fmtSignInt(d.delta_pers)} pers
+${fmtSignARS(d.delta_monto, 0)} M`;
+                                },
+                                textAlign: 'center'
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(ctx) {
+                                        const d = dSit[ctx.dataIndex];
+                                        return [
+                                            `Delta Deuda: ${fmtSignARS(d.delta_monto, 1)} M (${fmtSignPct(d.delta_monto_pct)})`,
+                                            `Delta Personas: ${fmtSignInt(d.delta_pers)} (${fmtSignPct(d.delta_pers_pct)})`,
+                                            `Jul: ${fmtInt(d.pers_jul)} pers -> Ago: ${fmtInt(d.pers_ago)} pers`
+                                        ];
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                suggestedMax: 580000,
+                                suggestedMin: -240000,
+                                grid: { color: 'rgba(255,255,255,0.05)' },
+                                ticks: { color: '#94a3b8', callback: v => fmtSignARS(v, 0) + ' M' }
+                            },
+                            x: { grid: { display: false }, ticks: { color: '#cbd5e1', font: { size: 10 } } }
+                        }
+                    }
+                });
+
+                // 4. Gráfico Media vs Mediana Delta
+                const dSegDelta = masterData.delta.segmentos;
+                chartMediaMediana = new Chart(document.getElementById('chartMediaMedianaCanvas').getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: dSegDelta.map(s => s.corto),
+                        datasets: [
+                            {
+                                label: 'Δ Deuda Media ($)',
+                                data: dSegDelta.map(s => s.delta_media),
+                                backgroundColor: 'rgba(59, 130, 246, 0.85)',
+                                borderRadius: 6
+                            },
+                            {
+                                label: 'Δ Deuda Mediana P50 ($)',
+                                data: dSegDelta.map(s => s.delta_mediana),
+                                backgroundColor: 'rgba(16, 185, 129, 0.85)',
+                                borderRadius: 6
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        layout: { padding: { top: 35, bottom: 25 } },
+                        plugins: {
+                            legend: { position: 'top', labels: { color: '#cbd5e1', font: { size: 11 } } },
+                            datalabels: {
+                                anchor: function(ctx) {
+                                    return ctx.dataset.data[ctx.dataIndex] >= 0 ? 'end' : 'start';
+                                },
+                                align: function(ctx) {
+                                    return ctx.dataset.data[ctx.dataIndex] >= 0 ? 'top' : 'bottom';
+                                },
+                                color: '#f8fafc',
+                                font: { size: 10, weight: 'bold' },
+                                formatter: function(val) {
+                                    return fmtSignARS(val, 0);
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                suggestedMax: 95000,
+                                suggestedMin: -80000,
+                                grid: { color: 'rgba(255,255,255,0.05)' },
+                                ticks: { color: '#94a3b8', callback: v => fmtSignARS(v, 0) }
+                            },
+                            x: { grid: { display: false }, ticks: { color: '#cbd5e1', font: { weight: 'bold' } } }
+                        }
+                    }
+                });
+
+                // 4.b Gráfico Rango Intercuartílico (P25 - P50 - P75) Delta
+                const iqrEl = document.getElementById('chartIqrCanvas');
+                if (iqrEl) chartIqr = new Chart(iqrEl.getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: dSegDelta.map(s => s.corto),
+                        datasets: [
+                            {
+                                label: 'Δ P25 ($)',
+                                data: dSegDelta.map(s => s.delta_p25),
+                                backgroundColor: 'rgba(148, 163, 184, 0.80)',
+                                borderRadius: 5
+                            },
+                            {
+                                label: 'Δ Mediana P50 ($)',
+                                data: dSegDelta.map(s => s.delta_mediana),
+                                backgroundColor: 'rgba(16, 185, 129, 0.85)',
+                                borderRadius: 5
+                            },
+                            {
+                                label: 'Δ P75 ($)',
+                                data: dSegDelta.map(s => s.delta_p75),
+                                backgroundColor: 'rgba(245, 158, 11, 0.85)',
+                                borderRadius: 5
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        layout: { padding: { top: 35, bottom: 25 } },
+                        plugins: {
+                            legend: { position: 'top', labels: { color: '#cbd5e1', font: { size: 10.5 } } },
+                            datalabels: {
+                                anchor: ctx => ctx.dataset.data[ctx.dataIndex] >= 0 ? 'end' : 'start',
+                                align: ctx => ctx.dataset.data[ctx.dataIndex] >= 0 ? 'top' : 'bottom',
+                                color: '#f8fafc',
+                                font: { size: 9.5, weight: 'bold' },
+                                formatter: val => fmtSignARS(val, 0)
+                            }
+                        },
+                        scales: {
+                            y: {
+                                suggestedMax: 115000,
+                                suggestedMin: -135000,
+                                grid: { color: 'rgba(255,255,255,0.05)' },
+                                ticks: { color: '#94a3b8', callback: v => fmtSignARS(v, 0) }
+                            },
+                            x: { grid: { display: false }, ticks: { color: '#cbd5e1', font: { weight: 'bold' } } }
+                        }
+                    }
+                });
+
+                // 5. Gráfico Top Entidades Delta
+                const dTop = masterData.delta.top_entidades;
+                chartTop = new Chart(document.getElementById('chartTopEntidadesCanvas').getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: dTop.map(d => d.label_wrapped),
+                        datasets: [{
+                            label: 'Variación Personas en Mora',
+                            data: dTop.map(d => d.delta_pers),
+                            backgroundColor: dTop.map(d => d.color),
+                            borderRadius: 4,
+                            borderWidth: 1,
+                            borderColor: 'rgba(255,255,255,0.15)',
+                            barThickness: 16
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        layout: { padding: { right: 90 } },
+                        plugins: {
+                            legend: { display: false },
+                            datalabels: {
+                                anchor: 'end',
+                                align: 'right',
+                                color: '#fca5a5',
+                                font: { size: 9.5, weight: 'bold' },
+                                formatter: function(val, ctx) {
+                                    const d = dTop[ctx.dataIndex];
+                                    return `${fmtSignInt(d.delta_pers)} (${fmtSignPct(d.delta_pers_pct)})`;
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(ctx) {
+                                        const d = dTop[ctx.dataIndex];
+                                        return [
+                                            `Delta Morosos: ${fmtSignInt(d.delta_pers)} (${fmtSignPct(d.delta_pers_pct)})`,
+                                            `Jul: ${fmtInt(d.pers_jul)} -> Ago: ${fmtInt(d.pers_ago)}`,
+                                            `Delta Monto: ${fmtSignARS(d.delta_monto, 1)} M (${fmtSignPct(d.delta_monto_pct)})`,
+                                            `Tasa Mora: ${d.tasa_jul.toFixed(1)}% -> ${d.tasa_ago.toFixed(1)}%`
+                                        ];
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: { color: 'rgba(255,255,255,0.05)' },
+                                ticks: { color: '#94a3b8', callback: v => fmtSignInt(v) }
+                            },
+                            y: {
+                                grid: { display: false },
+                                ticks: { autoSkip: false, color: '#e2e8f0', font: { size: 9.5, weight: '500' }, padding: 6 }
+                            }
+                        }
+                    }
+                });
+
+                // 6. Gráfico Tasa Sectorial Delta (en pp): Cartera ($), % Morosos s/ Deudores Cat. (1-5) y % s/ Únicos País
+                chartTasaSectorial = new Chart(document.getElementById('chartTasaSectorialCanvas').getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: dSegDelta.map(s => s.corto),
+                        datasets: [
+                            {
+                                label: 'Δ Tasa de Mora de Cartera $ (pp)',
+                                data: dSegDelta.map(s => s.delta_tasa_mora_pp),
+                                backgroundColor: 'rgba(244, 63, 94, 0.85)',
+                                borderRadius: 6
+                            },
+                            {
+                                label: 'Δ % Morosos (3-5) s/ Total Deudores Cat. (1-5) (pp)',
+                                data: dSegDelta.map(s => s.delta_pct_morosos_cat_pp),
+                                backgroundColor: 'rgba(245, 158, 11, 0.90)',
+                                borderRadius: 6
+                            },
+                            {
+                                label: 'Δ % sobre Morosos Únicos del País (pp)',
+                                data: dSegDelta.map(s => s.delta_pct_unicos_pp),
+                                backgroundColor: 'rgba(59, 130, 246, 0.85)',
+                                borderRadius: 6
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        layout: { padding: { top: 35, bottom: 25 } },
+                        plugins: {
+                            legend: { position: 'top', labels: { color: '#cbd5e1', font: { size: 10.5 } } },
+                            datalabels: {
+                                anchor: function(ctx) {
+                                    return ctx.dataset.data[ctx.dataIndex] >= 0 ? 'end' : 'start';
+                                },
+                                align: function(ctx) {
+                                    return ctx.dataset.data[ctx.dataIndex] >= 0 ? 'top' : 'bottom';
+                                },
+                                color: '#f8fafc',
+                                font: { size: 9.5, weight: 'bold' },
+                                formatter: function(val) {
+                                    return fmtSignPP(val, 2);
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                suggestedMax: 1.6,
+                                suggestedMin: -1.6,
+                                grid: { color: 'rgba(255,255,255,0.05)' },
+                                ticks: { color: '#94a3b8', callback: v => fmtSignPP(v, 1) }
+                            },
+                            x: { grid: { display: false }, ticks: { color: '#cbd5e1', font: { weight: 'bold' } } }
+                        }
+                    }
+                });
+
+            } else {
+                // Modo Normal: Julio o Agosto
+                const dataset = masterData[pestanaActiva].data;
+                const segs = masterData[pestanaActiva].segmentos;
+                const totalMorosos = masterData[pestanaActiva].kpis.morosos_num;
+                const etiquetaMes = masterData[pestanaActiva].meta.etiqueta;
+
+                titGen.textContent = "Deudores en mora: distribución por género";
+                if (subGen) subGen.textContent = "";
+                titEdad.textContent = "Deudores en mora: distribución por rango etario";
+                subEdad.textContent = "Ordenadas: # de personas | Tamaño de barra: Monto en $";
+                titSit.textContent = "Distribución de Deuda por Situación (de 3 a 5)";
+                subSit.textContent = "Monto total en $ con etiqueta de # de personas por situación";
+                titMM.textContent = "Media vs. Mediana de Deuda en Mora";
+                subMM.textContent = "comparación por tipo de entidad";
+                if (titIqr) titIqr.textContent = "Dispersión de Deuda: Rango Intercuartílico (P25 - P75) (" + etiquetaMes + ")";
+                if (subIqr) subIqr.textContent = "Umbral del 25% inferior (P25), punto medio (Mediana P50) y techo del 75% (P75) en $ por categoría";
+                titTop.textContent = "Top 10 Entidades Emisoras";
+                subTop.textContent = "Etiqueta: % de deudores de la entidad sobre el total nacional de mora (" + fmtInt(totalMorosos) + " personas)";
+                titTasaSec.textContent = "Tasas de Morosidad por Categoría (%)";
+                subTasaSec.textContent = "Comparativa entre porcentaje de mora de cartera, porcentaje de morosos sobre el total de deudores de cada categoría y participación sobre el total de morosos del país";
+
+                // 1. Género Doughnut
+                chartGenero = new Chart(document.getElementById('chartGeneroCanvas').getContext('2d'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: dataset.sexo.map(d => d.sexo),
+                        datasets: [{
+                            data: dataset.sexo.map(d => d.cantidad),
+                            backgroundColor: dataset.sexo.map(d => d.color),
+                            borderWidth: 2,
+                            borderColor: '#1e293b'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { position: 'bottom', labels: { color: '#cbd5e1', font: { size: 11, weight: 'bold' }, padding: 14 } },
+                            datalabels: {
+                                color: '#ffffff',
+                                font: { size: 10.5, weight: 'bold' },
+                                formatter: function(val, ctx) {
+                                    const item = dataset.sexo[ctx.dataIndex];
+                                    return `${item.sexo}
+${fmtInt(val)}
+(${Number(item.pct).toLocaleString('es-AR', {minimumFractionDigits: 1, maximumFractionDigits: 1})}%)`;
+                                },
+                                textAlign: 'center',
+                                textShadowBlur: 4,
+                                textShadowColor: 'rgba(0,0,0,0.8)'
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(ctx) {
+                                        const item = dataset.sexo[ctx.dataIndex];
+                                        return [
+                                            `${item.sexo}: ${fmtInt(item.cantidad)} personas (${Number(item.pct).toLocaleString('es-AR', {minimumFractionDigits: 1, maximumFractionDigits: 1})}%)`,
+                                            `Monto Deuda Mora: ${fmtARS(item.monto_millones, 1)} M`
+                                        ];
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+
+                // 2. Edad Bar
+                const maxMontoEdad = Math.max(...dataset.edad.map(d => d.monto_millones));
+                const barSizesEdad = dataset.edad.map(d => Math.round(22 + (d.monto_millones / maxMontoEdad) * 28));
+
+                chartEdad = new Chart(document.getElementById('chartEdadCanvas').getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: dataset.edad.map(d => d.rango),
+                        datasets: [{
+                            label: 'Cantidad de Personas',
+                            data: dataset.edad.map(d => d.cantidad),
+                            backgroundColor: dataset.edad.map(d => d.color),
+                            borderRadius: 6,
+                            borderWidth: 1,
+                            borderColor: 'rgba(255,255,255,0.15)',
+                            barThickness: barSizesEdad
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        layout: { padding: { top: 32 } },
+                        plugins: {
+                            legend: { display: false },
+                            datalabels: {
+                                anchor: 'end',
+                                align: 'top',
+                                color: '#f1f5f9',
+                                font: { size: 9.5, weight: 'bold' },
+                                formatter: function(val, ctx) {
+                                    const item = dataset.edad[ctx.dataIndex];
+                                    return `${fmtInt(val)}
+$ ${(item.monto_millones/1000).toLocaleString('es-AR', {minimumFractionDigits: 1, maximumFractionDigits: 1})}B`;
+                                },
+                                textAlign: 'center'
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(ctx) {
+                                        const item = dataset.edad[ctx.dataIndex];
+                                        return [
+                                            `Personas: ${fmtInt(item.cantidad)} (${Number(item.pct).toLocaleString('es-AR', {minimumFractionDigits: 1, maximumFractionDigits: 1})}%)`,
+                                            `Monto en Mora: ${fmtARS(item.monto_millones, 1)} M`
+                                        ];
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8', callback: v => fmtInt(v) } },
+                            x: { grid: { display: false }, ticks: { color: '#cbd5e1', font: { size: 9.5 } } }
+                        }
+                    }
+                });
+
+                // 3. Situaciones Bar
+                chartSit = new Chart(document.getElementById('chartSituacionesCanvas').getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: dataset.situaciones.map(d => d.etiqueta),
+                        datasets: [{
+                            label: 'Monto en Millones',
+                            data: dataset.situaciones.map(d => d.monto_millones),
+                            backgroundColor: dataset.situaciones.map(d => d.color),
+                            borderColor: 'rgba(255,255,255,0.15)',
+                            borderWidth: 1,
+                            borderRadius: 6
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        layout: { padding: { top: 30 } },
+                        plugins: {
+                            legend: { display: false },
+                            datalabels: {
+                                anchor: 'end',
+                                align: 'top',
+                                color: '#f8fafc',
+                                font: { size: 9.5, weight: 'bold' },
+                                formatter: function(val, ctx) {
+                                    const item = dataset.situaciones[ctx.dataIndex];
+                                    return `${fmtInt(item.personas_unicas)} pers.
+(${Number(item.pct_sobre_mora).toLocaleString('es-AR', {minimumFractionDigits: 1, maximumFractionDigits: 1})}% mora)`;
+                                },
+                                textAlign: 'center'
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(ctx) {
+                                        const item = dataset.situaciones[ctx.dataIndex];
+                                        return [
+                                            `Monto en Mora: ${fmtARS(item.monto_millones, 1)} M`,
+                                            `Deudores Únicos: ${fmtInt(item.personas_unicas)} (${Number(item.pct_sobre_mora).toLocaleString('es-AR', {minimumFractionDigits: 1, maximumFractionDigits: 1})}% del monto en mora 3-5)`
+                                        ];
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8', callback: v => fmtARS(v, 0) + ' M' } },
+                            x: { grid: { display: false }, ticks: { color: '#cbd5e1', font: { size: 10 } } }
+                        }
+                    }
+                });
+
+                // 4. Media vs. Mediana de Deuda en Mora
+                chartMediaMediana = new Chart(document.getElementById('chartMediaMedianaCanvas').getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: segs.map(s => s.corto),
+                        datasets: [
+                            {
+                                label: 'Deuda Media',
+                                data: segs.map(s => s.media),
+                                backgroundColor: 'rgba(59, 130, 246, 0.85)',
+                                borderColor: '#60a5fa',
+                                borderWidth: 1,
+                                borderRadius: 6
+                            },
+                            {
+                                label: 'Mediana de la deuda',
+                                data: segs.map(s => s.mediana),
+                                backgroundColor: 'rgba(16, 185, 129, 0.85)',
+                                borderColor: '#34d399',
+                                borderWidth: 1,
+                                borderRadius: 6
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        layout: { padding: { top: 30 } },
+                        plugins: {
+                            legend: { position: 'top', labels: { color: '#cbd5e1', font: { size: 11 } } },
+                            datalabels: {
+                                anchor: 'end',
+                                align: 'top',
+                                color: '#f8fafc',
+                                font: { size: 10, weight: 'bold' },
+                                formatter: function(val) {
+                                    return "$ " + fmtInt(val);
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(ctx) {
+                                        return `${ctx.dataset.label}: $ ${fmtInt(ctx.raw)}`;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                suggestedMax: 4500000,
+                                grid: { color: 'rgba(255,255,255,0.05)' },
+                                ticks: { color: '#94a3b8', callback: v => "$ " + fmtInt(v) }
+                            },
+                            x: { grid: { display: false }, ticks: { color: '#cbd5e1', font: { weight: 'bold' } } }
+                        }
+                    }
+                });
+
+                // 5. Dispersión de Deuda: Rango Intercuartílico (P25 - P75) con etiquetas a -90°
+                const iqrEl = document.getElementById('chartIqrCanvas');
+                if (iqrEl) chartIqr = new Chart(iqrEl.getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: segs.map(s => s.corto),
+                        datasets: [
+                            {
+                                label: 'P25 (El 25% debe hasta)',
+                                data: segs.map(s => s.p25),
+                                backgroundColor: 'rgba(148, 163, 184, 0.75)',
+                                borderColor: '#94a3b8',
+                                borderWidth: 1,
+                                borderRadius: 4
+                            },
+                            {
+                                label: 'Mediana P50 (El 50% debe hasta)',
+                                data: segs.map(s => s.mediana),
+                                backgroundColor: 'rgba(16, 185, 129, 0.85)',
+                                borderColor: '#34d399',
+                                borderWidth: 1,
+                                borderRadius: 4
+                            },
+                            {
+                                label: 'P75 (El 75% debe hasta)',
+                                data: segs.map(s => s.p75),
+                                backgroundColor: 'rgba(245, 158, 11, 0.85)',
+                                borderColor: '#fbbf24',
+                                borderWidth: 1,
+                                borderRadius: 4
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        layout: { padding: { top: 75 } },
+                        plugins: {
+                            legend: { position: 'top', labels: { color: '#cbd5e1', font: { size: 10.5 } } },
+                            datalabels: {
+                                anchor: 'end',
+                                align: 'end',
+                                rotation: -90,
+                                offset: 4,
+                                color: '#f8fafc',
+                                font: { size: 9.5, weight: 'bold' },
+                                formatter: function(val, ctx) {
+                                    const prefix = ctx.datasetIndex === 0 ? "P25: " : (ctx.datasetIndex === 1 ? "Med: " : "P75: ");
+                                    if (val === 0) return prefix + "$ 0";
+                                    if (val >= 1000000) return prefix + "$ " + (val / 1000000).toLocaleString('es-AR', {minimumFractionDigits: 1, maximumFractionDigits: 1}) + "M";
+                                    return prefix + "$ " + Math.round(val / 1000).toLocaleString('es-AR') + "k";
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(ctx) {
+                                        const s = segs[ctx.dataIndex];
+                                        if (ctx.datasetIndex === 0) return `P25 (El 25% debe hasta): $ ${fmtInt(s.p25)}`;
+                                        if (ctx.datasetIndex === 1) return `Mediana P50 (El 50% debe hasta): $ ${fmtInt(s.mediana)}`;
+                                        return `P75 (El 75% debe hasta): $ ${fmtInt(s.p75)} (IQR: $ ${fmtInt(s.iqr)})`;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                suggestedMax: 4600000,
+                                grid: { color: 'rgba(255,255,255,0.05)' },
+                                ticks: { color: '#94a3b8', callback: v => "$ " + fmtInt(v) }
+                            },
+                            x: { grid: { display: false }, ticks: { color: '#cbd5e1', font: { weight: 'bold' } } }
+                        }
+                    }
+                });
+
+                // 6. Top 10 Entidades Bar
+                const maxMontoTop = Math.max(...dataset.top_entidades.map(d => d.monto_mora_millones));
+                const barThicknessTop = dataset.top_entidades.map(d => Math.round(14 + (d.monto_mora_millones / maxMontoTop) * 20));
+
+                chartTop = new Chart(document.getElementById('chartTopEntidadesCanvas').getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: dataset.top_entidades.map(b => b.label_wrapped),
+                        datasets: [{
+                            label: 'Cantidad de Personas',
+                            data: dataset.top_entidades.map(b => b.personas_mora),
+                            backgroundColor: dataset.top_entidades.map(b => b.color),
+                            borderColor: 'rgba(255, 255, 255, 0.15)',
+                            borderWidth: 1,
+                            borderRadius: 4,
+                            barThickness: barThicknessTop
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        layout: { padding: { right: 80 } },
+                        plugins: {
+                            legend: { display: false },
+                            datalabels: {
+                                anchor: 'end',
+                                align: 'right',
+                                color: '#fca5a5',
+                                font: { size: 9.5, weight: 'bold' },
+                                formatter: function(val, ctx) {
+                                    const b = dataset.top_entidades[ctx.dataIndex];
+                                    const pct = ((b.personas_mora / totalMorosos) * 100).toLocaleString('es-AR', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+                                    return `${pct}%`;
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(ctx) {
+                                        const b = dataset.top_entidades[ctx.dataIndex];
+                                        const pct = ((b.personas_mora / totalMorosos) * 100).toLocaleString('es-AR', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+                                        return [
+                                            `Personas en mora: ${fmtInt(b.personas_mora)} (${pct}% del total en mora 3-5)`,
+                                            `Monto mora 3-5: ${fmtARS(b.monto_mora_millones, 1)} M`,
+                                            `Ratio mora entidad: ${b.tasa_mora.toFixed(1)}%`
+                                        ];
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8', callback: v => fmtInt(v) } },
+                            y: { grid: { display: false }, ticks: { autoSkip: false, color: '#e2e8f0', font: { size: 9.5, weight: '500' }, padding: 6 } }
+                        }
+                    }
+                });
+
+                // 7. Tasas de Morosidad por Categoría: Cartera ($), % Morosos s/ Deudores Cat. (1-5) y % s/ Deudores Únicos País (Triple Barra)
+                chartTasaSectorial = new Chart(document.getElementById('chartTasaSectorialCanvas').getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: segs.map(s => s.corto),
+                        datasets: [
+                            {
+                                label: '% Mora de Cartera',
+                                data: segs.map(s => s.tasa_mora),
+                                backgroundColor: 'rgba(244, 63, 94, 0.85)',
+                                borderColor: '#fb7185',
+                                borderWidth: 1,
+                                borderRadius: 6
+                            },
+                            {
+                                label: '% Morosos s/ Total Deudores Categoría',
+                                data: segs.map(s => s.pct_morosos_sobre_deudores_cat),
+                                backgroundColor: 'rgba(245, 158, 11, 0.90)',
+                                borderColor: '#fbbf24',
+                                borderWidth: 1,
+                                borderRadius: 6
+                            },
+                            {
+                                label: '% sobre Morosos Únicos del País',
+                                data: segs.map(s => s.pct_deudores_unicos),
+                                backgroundColor: 'rgba(59, 130, 246, 0.85)',
+                                borderColor: '#60a5fa',
+                                borderWidth: 1,
+                                borderRadius: 6
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        layout: { padding: { top: 28 } },
+                        plugins: {
+                            legend: { position: 'top', labels: { color: '#cbd5e1', font: { size: 10 } } },
+                            datalabels: {
+                                anchor: 'end',
+                                align: 'top',
+                                color: '#f8fafc',
+                                font: { size: 9.5, weight: 'bold' },
+                                formatter: function(val) {
+                                    return val.toLocaleString('es-AR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%";
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(ctx) {
+                                        const s = segs[ctx.dataIndex];
+                                        if (ctx.datasetIndex === 0) {
+                                            return `% Mora Cartera ($): ${s.tasa_mora.toFixed(2)}% (${s.mora_txt} s/ ${s.cartera_txt})`;
+                                        }
+                                        if (ctx.datasetIndex === 1) {
+                                            return `% Morosos s/ Deudores Cat. (3-5 ÷ 1-5): ${s.pct_morosos_sobre_deudores_cat.toFixed(2)}% (${fmtInt(s.personas_mora)} s/ ${fmtInt(s.deudores_totales_1_5)} deudores 1-5)`;
+                                        }
+                                        return `% s/ Morosos Únicos País: ${s.pct_deudores_unicos.toFixed(2)}% (${fmtInt(s.personas_mora)} s/ ${fmtInt(totalMorosos)})`;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                suggestedMax: 68,
+                                grid: { color: 'rgba(255,255,255,0.05)' },
+                                ticks: { color: '#94a3b8', callback: v => v + "%" }
+                            },
+                            x: { grid: { display: false }, ticks: { color: '#cbd5e1', font: { weight: 'bold' } } }
+                        }
+                    }
+                });
+
+                // 8. Distribución de Vínculos Crediticios en Mora (Doughnut)
+                chartVinculos = new Chart(document.getElementById('chartVinculosCanvas').getContext('2d'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: segs.map(s => s.corto),
+                        datasets: [{
+                            data: segs.map(s => s.personas_mora),
+                            backgroundColor: segs.map(s => s.color),
+                            borderWidth: 2,
+                            borderColor: '#1e293b'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { position: 'bottom', labels: { color: '#cbd5e1', font: { size: 11, weight: 'bold' }, padding: 14 } },
+                            datalabels: {
+                                color: '#ffffff',
+                                font: { size: 10, weight: 'bold' },
+                                formatter: function(val, ctx) {
+                                    const s = segs[ctx.dataIndex];
+                                    return `${s.corto.split(' ')[0]}
+${fmtInt(val)}
+(${s.pct_vinculos.toLocaleString('es-AR', {minimumFractionDigits: 1, maximumFractionDigits: 1})}%)`;
+                                },
+                                textAlign: 'center',
+                                textShadowBlur: 4,
+                                textShadowColor: 'rgba(0,0,0,0.85)'
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(ctx) {
+                                        const s = segs[ctx.dataIndex];
+                                        return [
+                                            `${s.nombre}: ${fmtInt(s.personas_mora)} personas (${s.pct_vinculos.toFixed(1)}% de vínculos)`,
+                                            `Incidencia sobre deudores únicos: ${s.pct_deudores_unicos.toFixed(1)}%`,
+                                            `Mora acumulada: ${s.mora_txt}`
+                                        ];
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+
+                // 9. Sección 4.1: Comparativa de Tasas de Interés en Argentina por Sector y Promedio de los 3
+                const resSeg = masterData[pestanaActiva].resumen_segmentos;
+                const labelsTasasArg = [...segs.map(s => s.corto), "Promedio 3 Sectores"];
+                const activasArg = [...segs.map(s => s.tna_activa), resSeg.tna_activa_prom];
+                const pasivasArg = [...segs.map(s => s.tna_pasiva), resSeg.tna_pasiva_prom];
+                const spreadsArg = [...segs.map(s => s.spread), resSeg.spread_prom];
+
+                chartTasasArg = new Chart(document.getElementById('chartTasasArgCanvas').getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: labelsTasasArg,
+                        datasets: [
+                            {
+                                label: 'Tasa por prestar (Activa TNA %)',
+                                data: activasArg,
+                                backgroundColor: 'rgba(244, 63, 94, 0.85)',
+                                borderRadius: 5
+                            },
+                            {
+                                label: 'Tasa pagada por depósitos (Pasiva TNA %)',
+                                data: pasivasArg,
+                                backgroundColor: 'rgba(59, 130, 246, 0.85)',
+                                borderRadius: 5
+                            },
+                            {
+                                label: 'Brecha de tasas (Activa - Pasiva, pp)',
+                                data: spreadsArg,
+                                backgroundColor: 'rgba(245, 158, 11, 0.90)',
+                                borderRadius: 5
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        layout: { padding: { top: 28 } },
+                        plugins: {
+                            legend: { position: 'top', labels: { color: '#cbd5e1', font: { size: 11 } } },
+                            datalabels: {
+                                anchor: 'end',
+                                align: 'top',
+                                color: '#f8fafc',
+                                font: { size: 9.5, weight: 'bold' },
+                                formatter: function(val, ctx) {
+                                    const suffix = ctx.datasetIndex === 2 ? " pp" : "%";
+                                    return val.toLocaleString('es-AR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + suffix;
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                suggestedMax: 160,
+                                grid: { color: 'rgba(255,255,255,0.05)' },
+                                ticks: { color: '#94a3b8', callback: v => v + "%" }
+                            },
+                            x: { grid: { display: false }, ticks: { color: '#cbd5e1', font: { weight: 'bold' } } }
+                        }
+                    }
+                });
+
+                // 10. Sección 4.2.A: Spreads Mayorista / Corporativo Internacional
+                const dMay = masterData.internacional.mayorista[pestanaActiva];
+                const argMay = dMay.find(d => d.pais.startsWith('Argentina'));
+                const notaMayEl = document.getElementById('notaSpreadMayArg');
+                if (notaMayEl && argMay) notaMayEl.textContent = argMay.spread.toLocaleString('es-AR', {minimumFractionDigits: 1, maximumFractionDigits: 1}) + ' puntos porcentuales (pp)';
+                chartSpreadMayorista = new Chart(document.getElementById('chartSpreadMayoristaCanvas').getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: dMay.map(d => d.pais),
+                        datasets: [{
+                            label: 'Spread Mayorista / Corporativo (pp)',
+                            data: dMay.map(d => d.spread),
+                            backgroundColor: dMay.map(d => d.color),
+                            borderRadius: 4,
+                            barThickness: 18
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        layout: { padding: { right: 65 } },
+                        plugins: {
+                            legend: { display: false },
+                            datalabels: {
+                                anchor: 'end',
+                                align: 'right',
+                                color: '#f8fafc',
+                                font: { size: 9.5, weight: 'bold' },
+                                formatter: v => v.toLocaleString('es-AR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + " pp"
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(ctx) {
+                                        const d = dMay[ctx.dataIndex];
+                                        return [
+                                            `Spread Corporativo: ${d.spread.toFixed(1)} pp`,
+                                            `Tasa Activa: ${d.activa.toFixed(1)}% | Tasa Pasiva: ${d.pasiva.toFixed(1)}%`,
+                                            `Fuente: ${d.fuente}`
+                                        ];
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                                suggestedMax: 38,
+                                grid: { color: 'rgba(255,255,255,0.05)' },
+                                ticks: { color: '#94a3b8', callback: v => v + " pp" }
+                            },
+                            y: {
+                                grid: { display: false },
+                                ticks: { autoSkip: false, color: '#e2e8f0', font: { size: 10, weight: '500' } }
+                            }
+                        }
+                    }
+                });
+
+                // 11. Sección 4.2.B: Spreads Minorista Internacional (Crédito al Consumo y Familias)
+                const dMin = masterData.internacional.minorista[pestanaActiva];
+                chartSpreadMinorista = new Chart(document.getElementById('chartSpreadMinoristaCanvas').getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: dMin.map(d => d.pais),
+                        datasets: [{
+                            label: 'Spread Minorista / Consumo Familiar (pp)',
+                            data: dMin.map(d => d.spread),
+                            backgroundColor: dMin.map(d => d.color),
+                            borderRadius: 4,
+                            barThickness: 20
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        layout: { padding: { right: 65 } },
+                        plugins: {
+                            legend: { display: false },
+                            datalabels: {
+                                anchor: 'end',
+                                align: 'right',
+                                color: '#f8fafc',
+                                font: { size: 9.5, weight: 'bold' },
+                                formatter: v => v.toLocaleString('es-AR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + " pp"
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(ctx) {
+                                        const d = dMin[ctx.dataIndex];
+                                        return [
+                                            `Spread Consumo Familiar: ${d.spread.toFixed(1)} pp`,
+                                            `Tasa Activa: ${d.activa.toFixed(1)}% | Tasa Pasiva: ${d.pasiva.toFixed(1)}%`,
+                                            `Fuente: ${d.fuente}`
+                                        ];
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                                suggestedMax: 110,
+                                grid: { color: 'rgba(255,255,255,0.05)' },
+                                ticks: { color: '#94a3b8', callback: v => v + " pp" }
+                            },
+                            y: {
+                                grid: { display: false },
+                                ticks: { autoSkip: false, color: '#e2e8f0', font: { size: 10, weight: '500' } }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        function renderTablas() {
+            const thead = document.getElementById('theadTablaDetallada');
+            const tbody = document.getElementById('tbodyTablaDetallada');
+            const tit = document.getElementById('tituloTablaDetallada');
+            const sub = document.getElementById('subtituloTablaDetallada');
+
+            const theadSeg = document.getElementById('theadTablaSegmentos');
+            const tbodySeg = document.getElementById('tbodyTablaSegmentos');
+            const titSeg = document.getElementById('tituloTablaSegmentos');
+            const subSeg = document.getElementById('subtituloTablaSegmentos');
+
+            if (!thead || !tbody) return;
+
+            if (pestanaActiva === 'delta') {
+                tit.textContent = "5.1 Tabla Comparativa de Clasificación BCRA (Agosto vs Julio 2026)";
+                sub.textContent = "Variaciones absolutas y relativas por situación crediticia (1 a 5)";
+                thead.innerHTML = `
+                    <tr>
+                        <th class="py-2.5 px-3 font-semibold">Situación</th>
+                        <th class="py-2.5 px-3 text-right font-semibold">Julio (Pers.)</th>
+                        <th class="py-2.5 px-3 text-right font-semibold">Agosto (Pers.)</th>
+                        <th class="py-2.5 px-3 text-right font-semibold">Delta Personas</th>
+                        <th class="py-2.5 px-3 text-right font-semibold">Julio ($ M)</th>
+                        <th class="py-2.5 px-3 text-right font-semibold">Agosto ($ M)</th>
+                        <th class="py-2.5 px-3 text-right font-semibold">Delta Monto</th>
+                        <th class="py-2.5 px-3 text-right font-semibold">% Cartera (Jul → Ago)</th>
+                        <th class="py-2.5 px-3 text-right font-semibold">% Mora 3-5 (Jul → Ago)</th>
+                    </tr>
+                `;
+
+                let htmlRows = "";
+                masterData.delta.tabla.forEach(r => {
+                    const deltaColorPers = r.delta_pers > 0 ? (r.situacion >= 3 ? "text-rose-400" : "text-emerald-400") : "text-slate-300";
+                    const deltaColorMonto = r.delta_monto > 0 ? (r.situacion >= 3 ? "text-rose-400" : "text-emerald-400") : "text-slate-300";
+
+                    htmlRows += `
+                        <tr class="hover:bg-slate-700/30">
+                            <td class="py-2.5 px-3 font-medium text-slate-200">${r.descripcion}</td>
+                            <td class="py-2.5 px-3 text-right font-mono text-slate-300">${fmtInt(r.pers_jul)}</td>
+                            <td class="py-2.5 px-3 text-right font-mono text-white font-bold">${fmtInt(r.pers_ago)}</td>
+                            <td class="py-2.5 px-3 text-right font-mono font-bold ${deltaColorPers}">
+                                ${fmtSignInt(r.delta_pers)} <span class="text-[10px] font-normal">(${fmtSignPct(r.delta_pers_pct)})</span>
+                            </td>
+                            <td class="py-2.5 px-3 text-right font-mono text-slate-300">${fmtARS(r.monto_jul, 1)}</td>
+                            <td class="py-2.5 px-3 text-right font-mono text-white font-bold">${fmtARS(r.monto_ago, 1)}</td>
+                            <td class="py-2.5 px-3 text-right font-mono font-bold ${deltaColorMonto}">
+                                ${fmtSignARS(r.delta_monto, 1)} <span class="text-[10px] font-normal">(${fmtSignPct(r.delta_monto_pct)})</span>
+                            </td>
+                            <td class="py-2.5 px-3 text-right font-mono text-slate-300">
+                                ${r.pct_cart_jul.toFixed(1)}% → ${r.pct_cart_ago.toFixed(1)}%
+                                <span class="text-[10px] ${r.delta_pct_cart >= 0 ? 'text-amber-400' : 'text-slate-400'} font-semibold">(${r.delta_pct_cart >= 0 ? '+' : ''}${r.delta_pct_cart.toFixed(1)} pp)</span>
+                            </td>
+                            <td class="py-2.5 px-3 text-right font-mono font-semibold text-rose-300">
+                                ${r.situacion >= 3 ? (r.pct_mora_jul.toFixed(1) + "% → " + r.pct_mora_ago.toFixed(1) + "% (" + (r.delta_pct_mora >= 0 ? '+' : '') + r.delta_pct_mora.toFixed(1) + " pp)") : "-"}
+                            </td>
+                        </tr>
+                    `;
+                });
+                tbody.innerHTML = htmlRows;
+
+                // Tabla 5.2 Delta Segmentos
+                titSeg.textContent = "5.2 Tabla Consolidada: Variación de Métricas de Mora por Tipo de Entidad (Agosto vs Julio 2026)";
+                subSeg.textContent = "Diferencias absolutas y relativas de cartera, mora grave (3 a 5), deudores totales (1 a 5), % de morosos sobre deudores de la categoría, media y mediana";
+                theadSeg.innerHTML = `
+                    <tr>
+                        <th class="py-2.5 px-3 font-semibold">Categoría / Sector</th>
+                        <th class="py-2.5 px-3 text-right font-semibold">Δ Entidades</th>
+                        <th class="py-2.5 px-3 text-right font-semibold">Δ Cartera (1 a 5)</th>
+                        <th class="py-2.5 px-3 text-right font-semibold">Δ Mora (3 a 5)</th>
+                        <th class="py-2.5 px-3 text-right font-semibold">Δ Mora $ (pp)</th>
+                        <th class="py-2.5 px-3 text-right font-semibold">Δ Deudores Cat. (1 a 5)</th>
+                        <th class="py-2.5 px-3 text-right font-semibold">Δ Morosos (3 a 5)</th>
+                        <th class="py-2.5 px-3 text-right font-semibold text-amber-300">Δ % Morosos s/ Cat. (pp)</th>
+                        <th class="py-2.5 px-3 text-right font-semibold">Δ % s/ Únicos País</th>
+                        <th class="py-2.5 px-3 text-right font-semibold">Δ Media ($)</th>
+                        <th class="py-2.5 px-3 text-right font-semibold">Δ Mediana P50 ($)</th>
+                    </tr>
+                `;
+
+                let htmlSegDelta = "";
+                masterData.delta.segmentos.forEach(s => {
+                    htmlSegDelta += `
+                        <tr class="hover:bg-slate-700/30">
+                            <td class="py-2.5 px-3 font-bold ${s.text_accent}">${s.nombre}</td>
+                            <td class="py-2.5 px-3 text-right text-slate-300">${fmtSignInt(s.delta_entidades)}</td>
+                            <td class="py-2.5 px-3 text-right text-white font-semibold">${s.delta_cartera_txt} <span class="text-[10px] text-emerald-400">(${fmtSignPct(s.delta_cartera_pct)})</span></td>
+                            <td class="py-2.5 px-3 text-right text-rose-400 font-semibold">${s.delta_mora_txt} <span class="text-[10px]">(${fmtSignPct(s.delta_mora_pct)})</span></td>
+                            <td class="py-2.5 px-3 text-right font-semibold ${s.delta_tasa_mora_pp > 0 ? 'text-rose-400' : 'text-emerald-400'}">${fmtSignPP(s.delta_tasa_mora_pp)}</td>
+                            <td class="py-2.5 px-3 text-right text-slate-200 font-semibold">${fmtSignInt(s.delta_deudores_1_5)} <span class="text-[10px] text-slate-400">(${fmtSignPct(s.delta_deudores_1_5_pct)})</span></td>
+                            <td class="py-2.5 px-3 text-right font-bold ${s.delta_personas >= 0 ? 'text-rose-400' : 'text-emerald-400'}">${fmtSignInt(s.delta_personas)} <span class="text-[10px]">(${fmtSignPct(s.delta_personas_pct)})</span></td>
+                            <td class="py-2.5 px-3 text-right font-bold ${s.delta_pct_morosos_cat_pp > 0 ? 'text-amber-300' : 'text-emerald-400'}">${fmtSignPP(s.delta_pct_morosos_cat_pp)}</td>
+                            <td class="py-2.5 px-3 text-right text-slate-200">${fmtSignPP(s.delta_pct_unicos_pp)}</td>
+                            <td class="py-2.5 px-3 text-right text-slate-200">${fmtSignARS(s.delta_media)} <span class="text-[10px] text-slate-400">(${fmtSignPct(s.delta_media_pct, 1)})</span></td>
+                            <td class="py-2.5 px-3 text-right text-slate-200">${fmtSignARS(s.delta_mediana)} <span class="text-[10px] text-slate-400">(${fmtSignPct(s.delta_mediana_pct, 1)})</span></td>
+                        </tr>
+                    `;
+                });
+                const rD = masterData.delta.resumen_segmentos;
+                htmlSegDelta += `
+                    <tr class="bg-slate-900/90 font-bold text-white border-t-2 border-slate-600">
+                        <td class="py-2.5 px-3">Total Sistema / Consolidado Nacional</td>
+                        <td class="py-2.5 px-3 text-right">-2</td>
+                        <td class="py-2.5 px-3 text-right">+$ 2,03 billones (+2,11%)</td>
+                        <td class="py-2.5 px-3 text-right text-rose-400">+$ 336.085 M (+2,22%)</td>
+                        <td class="py-2.5 px-3 text-right text-amber-300">+0,02 pp</td>
+                        <td class="py-2.5 px-3 text-right text-slate-200">+156.047 únicos (+0,74%)</td>
+                        <td class="py-2.5 px-3 text-right text-rose-400">+36.307 únicos (+0,61%)</td>
+                        <td class="py-2.5 px-3 text-right text-emerald-400">-0,03 pp (28,2%)</td>
+                        <td class="py-2.5 px-3 text-right">100,0% base</td>
+                        <td class="py-2.5 px-3 text-right">${fmtSignARS(rD.delta_media_pais)} (+1,60%)</td>
+                        <td class="py-2.5 px-3 text-right">${fmtSignARS(rD.delta_mediana_pais)} (-0,35%)</td>
+                    </tr>
+                `;
+                tbodySeg.innerHTML = htmlSegDelta;
+
+            } else {
+                // Modo Normal: Julio o Agosto
+                const data = masterData[pestanaActiva];
+                const etiquetaMes = masterData[pestanaActiva].meta.etiqueta;
+                tit.textContent = `5.1 Tabla Detallada de Clasificación BCRA (${etiquetaMes})`;
+                sub.textContent = `% Cartera Total sobre ${data.kpis.deuda_total_txt} · % de la Mora sobre ${data.kpis.mora_real_txt} en mora grave`;
+                thead.innerHTML = `
+                    <tr>
+                        <th class="py-2.5 px-4 font-semibold">Situación</th>
+                        <th class="py-2.5 px-4 text-right font-semibold"># Deudores Únicos</th>
+                        <th class="py-2.5 px-4 text-right font-semibold"># Deudas Nominales</th>
+                        <th class="py-2.5 px-4 text-right font-semibold">Monto en $</th>
+                        <th class="py-2.5 px-4 text-right font-semibold">% Cartera Total</th>
+                        <th class="py-2.5 px-4 text-right font-semibold">% de la Mora (3 a 5)</th>
+                    </tr>
+                `;
+
+                let htmlRows = "";
+                data.tabla.forEach(r => {
+                    const colorSit = r.situacion === 1 ? "text-emerald-400" : r.situacion === 2 ? "text-amber-400" : "text-rose-400";
+                    const moraPctTxt = r.situacion >= 3 ? (r.pct_en_mora.toFixed(1) + "%") : "-";
+
+                    htmlRows += `
+                        <tr class="hover:bg-slate-700/30">
+                            <td class="py-2.5 px-4 font-medium text-slate-200">${r.descripcion}</td>
+                            <td class="py-2.5 px-4 text-right font-mono text-slate-200">${fmtInt(r.personas_unicas)}</td>
+                            <td class="py-2.5 px-4 text-right font-mono text-slate-400 text-[11px]">${fmtInt(r.deudores_nominal)}</td>
+                            <td class="py-2.5 px-4 text-right font-semibold font-mono ${colorSit}">${fmtARS(r.monto_millones, 1)} M</td>
+                            <td class="py-2.5 px-4 text-right font-mono text-slate-300">${r.pct_de_cartera.toFixed(1)}%</td>
+                            <td class="py-2.5 px-4 text-right font-mono font-semibold text-rose-300">${moraPctTxt}</td>
+                        </tr>
+                    `;
+                });
+                tbody.innerHTML = htmlRows;
+
+                // Tabla 5.2 Consolidada Segmentos y Tasas
+                if (!theadSeg || !tbodySeg) return;
+                titSeg.textContent = `5.2 Tabla Consolidada: Métricas de Mora y Tasas por Categoría de Entidad (${etiquetaMes})`;
+                subSeg.textContent = `Desglose sectorial intragrupo de cartera (1 a 5), mora grave (3 a 5), total de deudores de la categoría (1 a 5), % de morosos sobre su propia categoría y tasas TNA`;
+                theadSeg.innerHTML = `
+                    <tr>
+                        <th class="py-2.5 px-3 font-semibold">Categoría / Sector</th>
+                        <th class="py-2.5 px-3 text-right font-semibold">Entidades</th>
+                        <th class="py-2.5 px-3 text-right font-semibold">Cartera Total ($)</th>
+                        <th class="py-2.5 px-3 text-right font-semibold">Mora 3 a 5 ($)</th>
+                        <th class="py-2.5 px-3 text-right font-semibold">Tasa Mora ($)</th>
+                        <th class="py-2.5 px-3 text-right font-semibold">Deudores Cat. (1 a 5)</th>
+                        <th class="py-2.5 px-3 text-right font-semibold">Personas Mora (3 a 5)</th>
+                        <th class="py-2.5 px-3 text-right font-semibold text-amber-300">% Morosos s/ Deudores Cat.</th>
+                        <th class="py-2.5 px-3 text-right font-semibold">% s/ Únicos País</th>
+                        <th class="py-2.5 px-3 text-right font-semibold">Media Calibrada</th>
+                        <th class="py-2.5 px-3 text-right font-semibold">Mediana (P50)</th>
+                        <th class="py-2.5 px-3 text-right font-semibold">TNA Activa / Pasiva / Spread</th>
+                    </tr>
+                `;
+
+                let htmlSeg = "";
+                data.segmentos.forEach(s => {
+                    htmlSeg += `
+                        <tr class="hover:bg-slate-700/30">
+                            <td class="py-2.5 px-3 font-bold ${s.text_accent}">${s.nombre}</td>
+                            <td class="py-2.5 px-3 text-right text-slate-300">${s.entidades}</td>
+                            <td class="py-2.5 px-3 text-right text-white font-semibold">${s.cartera_txt} <span class="text-[10px] text-slate-400">(${s.pct_cartera_sistema.toFixed(1)}%)</span></td>
+                            <td class="py-2.5 px-3 text-right text-rose-400 font-semibold">${s.mora_txt} <span class="text-[10px] text-rose-300">(${s.pct_mora_sistema.toFixed(1)}%)</span></td>
+                            <td class="py-2.5 px-3 text-right font-bold text-rose-300">${s.tasa_mora.toFixed(2)}%</td>
+                            <td class="py-2.5 px-3 text-right font-semibold text-slate-200">${fmtInt(s.deudores_totales_1_5)}</td>
+                            <td class="py-2.5 px-3 text-right font-bold text-white">${fmtInt(s.personas_mora)}</td>
+                            <td class="py-2.5 px-3 text-right font-extrabold text-amber-300 bg-amber-500/10">${s.pct_morosos_sobre_deudores_cat.toFixed(2)}%</td>
+                            <td class="py-2.5 px-3 text-right text-blue-300 font-semibold">${s.pct_deudores_unicos.toFixed(1)}%</td>
+                            <td class="py-2.5 px-3 text-right text-slate-200 font-semibold">$ ${fmtInt(s.media)}</td>
+                            <td class="py-2.5 px-3 text-right text-emerald-400 font-semibold">$ ${fmtInt(s.mediana)}</td>
+                            <td class="py-2.5 px-3 text-right text-amber-300 font-semibold">${s.tna_activa.toFixed(1)}% / ${s.tna_pasiva.toFixed(1)}% (${s.spread.toFixed(1)} pp)</td>
+                        </tr>
+                    `;
+                });
+                const res = data.resumen_segmentos;
+                htmlSeg += `
+                    <tr class="bg-slate-900/90 font-bold text-white border-t-2 border-slate-600">
+                        <td class="py-2.5 px-3">Total Sistema / Consolidado Nacional</td>
+                        <td class="py-2.5 px-3 text-right">${data.kpis.entidades_txt.split(' ')[0]}</td>
+                        <td class="py-2.5 px-3 text-right">${data.kpis.deuda_total_txt} (100,0%)</td>
+                        <td class="py-2.5 px-3 text-right text-rose-400">${data.kpis.mora_real_txt} (100,0%)</td>
+                        <td class="py-2.5 px-3 text-right text-amber-300">${res.tasa_mora_total.toFixed(2)}% (global)</td>
+                        <td class="py-2.5 px-3 text-right text-slate-200">${fmtInt(res.deudores_unicos_pais_1_5)} únicos (*)</td>
+                        <td class="py-2.5 px-3 text-right text-rose-400">${fmtInt(res.personas_unicas_pais)} únicos (*)</td>
+                        <td class="py-2.5 px-3 text-right text-amber-300 bg-amber-500/10 font-extrabold">${res.pct_morosos_sobre_deudores_pais.toFixed(2)}% (país)</td>
+                        <td class="py-2.5 px-3 text-right text-blue-300">100,0% padrón</td>
+                        <td class="py-2.5 px-3 text-right">$ ${fmtInt(res.media_pais)}</td>
+                        <td class="py-2.5 px-3 text-right text-emerald-400">$ ${fmtInt(res.mediana_pais)}</td>
+                        <td class="py-2.5 px-3 text-right text-amber-300">${res.tna_activa_prom.toFixed(1)}% / ${res.tna_pasiva_prom.toFixed(1)}% (${res.spread_prom.toFixed(1)} pp)</td>
+                    </tr>
+                `;
+                tbodySeg.innerHTML = htmlSeg;
+            }
+        }
+
+
+        function inicializarDashboard() {
+            if (typeof Chart === 'undefined') {
+                setTimeout(inicializarDashboard, 60);
+                return;
+            }
+            if (typeof ChartDataLabels !== 'undefined') {
+                try {
+                    Chart.register(ChartDataLabels);
+                } catch(e) {
+                    console.warn(e);
+                }
+            }
+            cambiarPestana('septiembre');
+        }
+
+        if (document.readyState === 'complete' || document.readyState === 'interactive') {
+            inicializarDashboard();
+        } else {
+            document.addEventListener('DOMContentLoaded', inicializarDashboard);
+            window.addEventListener('load', inicializarDashboard);
+        }
+    </script>
+</body>
+</html>
